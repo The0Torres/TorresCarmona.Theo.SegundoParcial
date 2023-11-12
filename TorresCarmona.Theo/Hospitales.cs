@@ -1,0 +1,1 @@
+﻿public enum EHospitales {Aleman, Italiano , Nacional ,DeNiños}

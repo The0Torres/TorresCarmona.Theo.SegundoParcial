@@ -1,0 +1,1 @@
+﻿public enum EMedios { Television, Radio, Youtube, Twitter, Revistas}

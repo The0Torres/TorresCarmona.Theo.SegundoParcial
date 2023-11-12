@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Laburos.Trabajador">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAABEAAAAYAAACEgAAAhAAAAAAAAAAAAAAAAAAAAiQ=</HashCode>
+      <FileName>Trabajador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Laburos.Periodista">
+    <Position X="4.25" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAAIAABAAgEAQAABAAAAAAAAAAAAAAAAAAiA=</HashCode>
+      <FileName>Periodista.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Laburos.Sindicato">
+    <Position X="8" Y="1" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAABAAAAAAAAAQAEAAIAAAAAAAAAAECAIBAAACiA=</HashCode>
+      <FileName>Sindicato.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Laburos.Cirujano">
+    <Position X="9.25" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>gAUAAAAEAAIAAAAAgAAAAAAAAAAAAAAAAAAAAIABAiA=</HashCode>
+      <FileName>Cirujano.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Laburos.Deportista">
+    <Position X="0.5" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAEAQAABIAAAAAoAAAACAAAAAAAAAAAAAAAAAAAiA=</HashCode>
+      <FileName>Deportista.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Laburos.Usuario">
+    <Position X="13.25" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQBAACEAAAAAAAAAAQAAACAAAAQAAAAAAA=</HashCode>
+      <FileName>Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ETipo">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>TipoTrabajador.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EMedios">
+    <Position X="6.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAABAAAAACAAAAAAAAAAAIA=</HashCode>
+      <FileName>Medios.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EHospitales">
+    <Position X="12" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAABAAAAAAAAAAIAAAAABAAAAAA=</HashCode>
+      <FileName>Hospitales.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
