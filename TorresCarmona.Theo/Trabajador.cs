@@ -76,7 +76,7 @@ namespace Laburos
 
         protected virtual string MostrarDatos()
         {
-            return $"{Nombre} {Apellido} - {Tipo} - {Salario}$";
+            return $"Nombre:{Nombre} {Apellido} - Trabajador:{Tipo} - Sueldo:{Salario}$";
         }
         public override string ToString()
         {
