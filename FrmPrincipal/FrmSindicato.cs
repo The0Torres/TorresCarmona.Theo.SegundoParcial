@@ -130,9 +130,14 @@ namespace FrmPrincipal
             else
             {
                 Trabajador trabajador = Sindicato.Trabajadores[indice];
-                Sindicato -= trabajador;
-                this.ActualizarVisor();
 
+                DialogResult result = MessageBox.Show("¿Estás seguro de eliminar al trabajador?", "Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    Sindicato -= trabajador;
+                    this.ActualizarVisor();
+                }
             }
 
         }
