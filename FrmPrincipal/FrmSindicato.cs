@@ -35,7 +35,19 @@ namespace FrmPrincipal
         {
             this.usuario = usuario;
             MessageBox.Show($"Bienvenido/a {usuario.nombre}");
+
+            if (usuario.perfil == "vendedor")
+            {
+                btnEliminar.Enabled = false;
+                btnAgregar.Enabled = false;
+                btnModificar.Enabled = false;
+            }
+            else if(usuario.perfil == "supervisor")
+            {
+                btnEliminar.Enabled = false;
+            }
         }
+
 
         private void ActualizarVisor()
         {
@@ -121,6 +133,7 @@ namespace FrmPrincipal
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+
             int indice = this.lstSindicato.SelectedIndex;
 
             if (indice == -1)
