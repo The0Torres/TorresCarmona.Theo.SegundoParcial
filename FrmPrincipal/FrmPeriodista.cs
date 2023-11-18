@@ -65,17 +65,17 @@ namespace FrmPrincipal
 
                 if (!double.TryParse(this.txtCredibilidad.Text, out double credibilidad) || credibilidad < 0 || credibilidad > 100)
                 {
-                    throw new FormatException("Ingrese un porcentaje de credibilidad válido.");
+                    throw new DatosInvalidosException("Ingrese un porcentaje de credibilidad válido.");
                 }
 
                 if (string.IsNullOrWhiteSpace(txtEspecializacion.Text))
                 {
-                    throw new ArgumentException("Ingrese una especialización.");
+                    throw new DatosInvalidosException("Ingrese una especialización.");
                 }
 
                 if (cmbMedio.SelectedItem == null)
                 {
-                    throw new ArgumentException("Seleccione un medio.");
+                    throw new DatosInvalidosException("Seleccione un medio.");
                 }
 
                 nombre = txtNombre.Text;
@@ -88,11 +88,7 @@ namespace FrmPrincipal
 
                 DialogResult = DialogResult.OK;
             }
-            catch (FormatException ex)
-            {
-                MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            catch (ArgumentException ex)
+            catch (DatosInvalidosException ex)
             {
                 MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
