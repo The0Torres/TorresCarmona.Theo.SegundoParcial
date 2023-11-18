@@ -54,39 +54,27 @@ namespace FrmPrincipal
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (!ValidarDatos())
+            try
             {
-                return;
-            }
+                if (!ValidarDatos())
+                {
+                    return;
+                }
 
-            if (!double.TryParse(this.txtCirugias.Text, out double cirugias) || cirugias < 0 || this.txtCirugias.Text.Contains("."))
-            {
-                MessageBox.Show("Ingrese las cirugias hechas de forma correcta.",
-                                        "Advertencia",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Warning);
-                return;
-            }
+                if (!double.TryParse(this.txtCirugias.Text, out double cirugias) || cirugias < 0 || this.txtCirugias.Text.Contains("."))
+                {
+                    throw new DatosInvalidosException("Ingrese las cirugías hechas de forma correcta.");
+                }
 
-            if (string.IsNullOrWhiteSpace(txtEspecialidad.Text))
-            {
-                MessageBox.Show("Ingrese una especialidad.",
-                                        "Advertencia",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Warning);
-                return;
-            }
+                if (string.IsNullOrWhiteSpace(txtEspecialidad.Text))
+                {
+                    throw new DatosInvalidosException("Ingrese una especialidad.");
+                }
 
-            if (cmbHospital.SelectedItem == null)
-            {
-                MessageBox.Show("Seleccione un hospital.",
-                "Advertencia",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Warning);
-
-            }
-            else
-            {
+                if (cmbHospital.SelectedItem == null)
+                {
+                    throw new DatosInvalidosException("Seleccione un hospital.");
+                }
 
                 nombre = txtNombre.Text;
                 apellido = txtApellido.Text;
@@ -98,7 +86,10 @@ namespace FrmPrincipal
 
                 DialogResult = DialogResult.OK;
             }
-
+            catch (DatosInvalidosException ex)
+            {
+                MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
         }
 
