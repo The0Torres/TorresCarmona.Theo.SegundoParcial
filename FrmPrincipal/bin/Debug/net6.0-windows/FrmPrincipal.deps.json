@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v6.0": {
       "FrmPrincipal/1.0.0": {
         "dependencies": {
-          "Entidades": "1.0.0",
           "TorresCarmona.Theo": "1.0.0"
         },
         "runtime": {

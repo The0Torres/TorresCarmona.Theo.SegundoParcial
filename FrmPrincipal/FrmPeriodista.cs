@@ -56,39 +56,27 @@ namespace FrmPrincipal
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (!ValidarDatos())
+            try
             {
-                return;
-            }
+                if (!ValidarDatos())
+                {
+                    return;
+                }
 
-            if (!double.TryParse(this.txtCredibilidad.Text, out double credibilidad) || credibilidad < 0 || credibilidad > 100)
-            {
-                MessageBox.Show("Ingrese un porcentaje de credibilidad valido.",
-                                        "Advertencia",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Warning);
-                return;
-            }
+                if (!double.TryParse(this.txtCredibilidad.Text, out double credibilidad) || credibilidad < 0 || credibilidad > 100)
+                {
+                    throw new FormatException("Ingrese un porcentaje de credibilidad válido.");
+                }
 
-            if (string.IsNullOrWhiteSpace(txtEspecializacion.Text))
-            {
-                MessageBox.Show("Ingrese una especializacion.",
-                                        "Advertencia",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Warning);
-                return;
-            }
+                if (string.IsNullOrWhiteSpace(txtEspecializacion.Text))
+                {
+                    throw new ArgumentException("Ingrese una especialización.");
+                }
 
-            if (cmbMedio.SelectedItem == null)
-            {
-                MessageBox.Show("Seleccione un medio.",
-                "Advertencia",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Warning);
-
-            }
-            else
-            {
+                if (cmbMedio.SelectedItem == null)
+                {
+                    throw new ArgumentException("Seleccione un medio.");
+                }
 
                 nombre = txtNombre.Text;
                 apellido = txtApellido.Text;
@@ -99,6 +87,14 @@ namespace FrmPrincipal
                 periodista = new Periodista(nombre, apellido, salario, tipo, especializacion, credibilidad, medio);
 
                 DialogResult = DialogResult.OK;
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }

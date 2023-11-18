@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SegundoParcial\TorresCarmona.Theo\Entidades\Entidades.csproj" />
     <ProjectReference Include="..\TorresCarmona.Theo\TorresCarmona.Theo.csproj" />
   </ItemGroup>
 
