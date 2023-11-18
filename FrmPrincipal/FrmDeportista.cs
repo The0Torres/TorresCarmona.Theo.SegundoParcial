@@ -50,40 +50,27 @@ namespace FrmPrincipal
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (!ValidarDatos())
+            try
             {
-                return;
-            }
+                if (!ValidarDatos())
+                {
+                    return;
+                }
 
-            if (!double.TryParse(this.txtTrofeos.Text, out double trofeos) || trofeos < 0 || this.txtTrofeos.Text.Contains("."))
-            {
-                MessageBox.Show("Ingrese una cantidad de trofeos valida.",
-                                        "Advertencia",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Warning);
-                return;
-            }
+                if (!double.TryParse(this.txtTrofeos.Text, out double trofeos) || trofeos < 0 || this.txtTrofeos.Text.Contains("."))
+                {
+                    throw new DatosInvalidosException("Ingrese una cantidad de trofeos válida.");
+                }
 
-            if (!int.TryParse(this.txtRanking.Text, out int ranking) || ranking <= 0 || this.txtRanking.Text.Contains("."))
-            {
-                MessageBox.Show("Ingrese un ranking mundial.",
-                                        "Advertencia",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Warning);
-                return;
-            }
+                if (!int.TryParse(this.txtRanking.Text, out int ranking) || ranking <= 0 || this.txtRanking.Text.Contains("."))
+                {
+                    throw new DatosInvalidosException("Ingrese un ranking mundial válido.");
+                }
 
-            if (string.IsNullOrWhiteSpace(txtDeporte.Text))
-            {
-                MessageBox.Show("Ingrese una especializacion.",
-                                        "Advertencia",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Warning);
-                return;
-            }
-
-            else
-            {
+                if (string.IsNullOrWhiteSpace(txtDeporte.Text))
+                {
+                    throw new DatosInvalidosException("Ingrese una especialidad.");
+                }
 
                 nombre = txtNombre.Text;
                 apellido = txtApellido.Text;
@@ -93,6 +80,10 @@ namespace FrmPrincipal
                 deportista = new Deportista(nombre, apellido, salario, tipo, deporte, trofeos, ranking);
 
                 DialogResult = DialogResult.OK;
+            }
+            catch (DatosInvalidosException ex)
+            {
+                MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
