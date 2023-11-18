@@ -38,13 +38,13 @@ namespace FrmPrincipal
 
             if (usuario.perfil == "vendedor")
             {
-                btnEliminar.Enabled = false;
-                btnAgregar.Enabled = false;
-                btnModificar.Enabled = false;
+                btnEliminar.Hide();
+                btnAgregar.Hide();
+                btnModificar.Hide();
             }
             else if(usuario.perfil == "supervisor")
             {
-                btnEliminar.Enabled = false;
+                btnEliminar.Hide();
             }
         }
 
