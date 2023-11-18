@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\theo\\SegundoParcial\\TorresCarmona.Theo\\Entidades\\Entidades.csproj": {}
+    "C:\\Users\\theo\\SegundoParcial\\SindicatoTest\\SindicatoTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\theo\\SegundoParcial\\TorresCarmona.Theo\\Entidades\\Entidades.csproj": {
+    "C:\\Users\\theo\\SegundoParcial\\SindicatoTest\\SindicatoTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\theo\\SegundoParcial\\TorresCarmona.Theo\\Entidades\\Entidades.csproj",
-        "projectName": "Entidades",
-        "projectPath": "C:\\Users\\theo\\SegundoParcial\\TorresCarmona.Theo\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\theo\\SegundoParcial\\SindicatoTest\\SindicatoTest.csproj",
+        "projectName": "SindicatoTest",
+        "projectPath": "C:\\Users\\theo\\SegundoParcial\\SindicatoTest\\SindicatoTest.csproj",
         "packagesPath": "C:\\Users\\theo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\theo\\SegundoParcial\\TorresCarmona.Theo\\Entidades\\obj\\",
+        "outputPath": "C:\\Users\\theo\\SegundoParcial\\SindicatoTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\theo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,24 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.2.10, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.10, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.5.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
