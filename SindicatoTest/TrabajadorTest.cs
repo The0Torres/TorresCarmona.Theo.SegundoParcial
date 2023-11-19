@@ -53,5 +53,20 @@ namespace SindicatoTest
             Assert.AreEqual("Zeta", sindicato.Trabajadores[1].Nombre);
         }
 
+        [TestMethod]
+        public void TestInsertarPeriodistaEnBaseDeDatos()
+        {
+            // Arrange
+            AccesoDatos accesoDatos = new AccesoDatos();
+            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 1, "Deportes", 90, EMedios.Television);
+
+            // Act
+            bool resultado = accesoDatos.InsertarPeriodista(periodista);
+
+            // Assert
+            Assert.IsTrue(resultado);
+
+        }
+
     }
 }

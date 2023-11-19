@@ -90,6 +90,9 @@ namespace FrmPrincipal
                     medio = (EMedios)cmbMedio.SelectedItem;
                     periodista = new Periodista(nombre, apellido, salario, tipo, id, especializacion, credibilidad, medio);
 
+                    AccesoDatos accesoDatos = new AccesoDatos();
+                    accesoDatos.InsertarPeriodista(periodista);
+
                     DialogResult = DialogResult.OK;
                 }
 
