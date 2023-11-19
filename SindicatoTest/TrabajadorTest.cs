@@ -58,7 +58,7 @@ namespace SindicatoTest
         {
             // Arrange
             AccesoDatos accesoDatos = new AccesoDatos();
-            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 1, "Deportes", 90, EMedios.Television);
+            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 4, "Deportes", 90, EMedios.Television);
 
             // Act
             bool resultado = accesoDatos.InsertarPeriodista(periodista);

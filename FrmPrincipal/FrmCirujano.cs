@@ -85,6 +85,9 @@ namespace FrmPrincipal
                     hospital = (EHospitales)cmbHospital.SelectedItem;
                     cirujano = new Cirujano(nombre, apellido, salario, tipo, id, especialidad, hospital, cirugias);
 
+                    AccesoDatos accesoDatos = new AccesoDatos();
+                    accesoDatos.InsertarCirujano(cirujano);
+
                     DialogResult = DialogResult.OK;
                 }
                 

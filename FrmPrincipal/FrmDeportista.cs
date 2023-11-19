@@ -80,6 +80,9 @@ namespace FrmPrincipal
                     deporte = txtDeporte.Text;
                     deportista = new Deportista(nombre, apellido, salario, tipo, id, deporte, trofeos, ranking);
 
+                    AccesoDatos accesoDatos = new AccesoDatos();
+                    accesoDatos.InsertarDeportista(deportista);
+
                     DialogResult = DialogResult.OK;
                 }
                
