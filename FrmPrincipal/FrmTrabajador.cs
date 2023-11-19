@@ -23,6 +23,7 @@ namespace FrmPrincipal
         protected string apellido;
         protected double salario;
         protected ETipo tipo;
+        protected double id;
 
         public FrmTrabajador()
         {
@@ -43,8 +44,9 @@ namespace FrmPrincipal
         protected bool ValidarDatos()
         {
 
-            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtApellido.Text) || 
-                string.IsNullOrEmpty(txtSalario.Text) || cmbTipo.SelectedItem == null)
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtApellido.Text) ||
+                string.IsNullOrEmpty(txtSalario.Text) || cmbTipo.SelectedItem == null ||
+                string.IsNullOrEmpty(txtId.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -52,6 +54,14 @@ namespace FrmPrincipal
             if (!double.TryParse(this.txtSalario.Text, out double salario) || salario <= 0)
             {
                 MessageBox.Show("Ingrese un salario valido.",
+                                        "Advertencia",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Warning);
+                return false;
+            }
+            if (!double.TryParse(this.txtId.Text, out double id) || salario < 0)
+            {
+                MessageBox.Show("Ingrese un Id valido.",
                                         "Advertencia",
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Warning);

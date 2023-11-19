@@ -40,20 +40,20 @@
             this.rankingMundial = 100;
         }
 
-        public Deportista(string Nombre, string Apellido, double Salario, ETipo Tipo, string Deporte) 
-            : base(Nombre, Apellido, Salario, Tipo)
+        public Deportista(string Nombre, string Apellido, double Salario, ETipo Tipo, double Id ,string Deporte) 
+            : base(Nombre, Apellido, Salario, Tipo, Id)
         {
             this.deporte = Deporte;
         }
 
-        public Deportista(string Nombre, string Apellido, double Salario, ETipo Tipo, string Deporte, double Trofeos) 
-            : this(Nombre, Apellido, Salario, Tipo, Deporte)
+        public Deportista(string Nombre, string Apellido, double Salario, ETipo Tipo, double Id, string Deporte, double Trofeos) 
+            : this(Nombre, Apellido, Salario, Tipo, Id,Deporte)
         {
             this.trofeos = Trofeos;
         }
 
-        public Deportista(string Nombre, string Apellido, double Salario, ETipo Tipo, string Deporte, double Trofeos, double RankingMundial) 
-            : this(Nombre, Apellido, Salario, Tipo, Deporte,Trofeos)
+        public Deportista(string Nombre, string Apellido, double Salario, ETipo Tipo, double Id, string Deporte, double Trofeos, double RankingMundial) 
+            : this(Nombre, Apellido, Salario, Tipo, Id,Deporte,Trofeos)
         {
             this.rankingMundial = RankingMundial;
         }
@@ -71,7 +71,7 @@
 
         public static bool operator ==(Deportista deportista1, Deportista deportista2)
         {
-            return deportista1.Nombre == deportista2.Nombre && deportista1.Apellido == deportista2.Apellido;
+            return deportista1.Nombre == deportista2.Nombre && deportista1.Apellido == deportista2.Apellido && deportista1.Id == deportista2.Id;
         }
 
         public static bool operator !=(Deportista deportista1, Deportista deportista2)

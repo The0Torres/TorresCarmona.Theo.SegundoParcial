@@ -38,12 +38,12 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(152, 288);
+            btnAgregar.Location = new Point(151, 335);
             btnAgregar.Click += btnAgregar_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(490, 288);
+            btnCancelar.Location = new Point(493, 335);
             btnCancelar.Click += btnCancelar_Click;
             // 
             // txtDeporte
@@ -101,7 +101,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(697, 350);
+            ClientSize = new Size(697, 386);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(txtRanking);

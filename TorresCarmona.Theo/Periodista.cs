@@ -39,20 +39,20 @@
             this.especializacion = "N/N";
         }
 
-        public Periodista(string Nombre, string Apellido, double Salario, ETipo Tipo, string Especializacion) 
-            :base(Nombre, Apellido, Salario, Tipo)
+        public Periodista(string Nombre, string Apellido, double Salario, ETipo Tipo,double Id, string Especializacion) 
+            :base(Nombre, Apellido, Salario, Tipo,Id)
         {
             this.especializacion = Especializacion;
         }
 
-        public Periodista(string Nombre, string Apellido, double Salario, ETipo Tipo,string Especializacion, double Credibilidad) 
-            :this(Nombre, Apellido, Salario, Tipo, Especializacion)
+        public Periodista(string Nombre, string Apellido, double Salario, ETipo Tipo,double Id,string Especializacion, double Credibilidad) 
+            :this(Nombre, Apellido, Salario, Tipo, Id,Especializacion)
         {
             this.credibilidad = Credibilidad;
         }
 
-        public Periodista(string Nombre, string Apellido, double Salario, ETipo Tipo, string Especializacion, double Credibilidad, EMedios Medio) 
-            :this(Nombre, Apellido, Salario, Tipo, Especializacion, Credibilidad)
+        public Periodista(string Nombre, string Apellido, double Salario, ETipo Tipo,double Id,string Especializacion, double Credibilidad, EMedios Medio) 
+            :this(Nombre, Apellido, Salario, Tipo, Id,Especializacion, Credibilidad)
         {
             this.medio = Medio;
         }
@@ -71,7 +71,7 @@
         public static bool operator ==(Periodista periodista1, Periodista periodista2)
         {
 
-            return periodista1.Nombre == periodista2.Nombre && periodista1.Apellido == periodista2.Apellido;
+            return periodista1.Nombre == periodista2.Nombre && periodista1.Apellido == periodista2.Apellido && periodista1.Id == periodista2.Id;
         }
 
         public static bool operator !=(Periodista periodista1, Periodista periodista2)

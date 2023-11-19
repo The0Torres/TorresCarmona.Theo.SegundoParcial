@@ -18,7 +18,7 @@ namespace FrmPrincipal
     /// Permite ingresar y modificar datos específicos de un Periodista, como la especialización,
     /// nivel de credibilidad y el medio de comunicación en el que trabaja.
     /// </summary>
-   
+
     public partial class FrmPeriodista : FrmTrabajador
     {
 
@@ -32,12 +32,13 @@ namespace FrmPrincipal
             get { return this.periodista; }
         }
 
-        public FrmPeriodista(Periodista periodista) :this()
+        public FrmPeriodista(Periodista periodista) : this()
         {
             txtNombre.Text = periodista.Nombre;
             txtApellido.Text = periodista.Apellido;
             txtSalario.Text = periodista.Salario.ToString();
             cmbTipo.SelectedItem = periodista.Tipo;
+            txtId.Text = periodista.Id.ToString();
             txtEspecializacion.Text = periodista.Especializacion;
             txtCredibilidad.Text = periodista.Credibilidad.ToString();
             cmbMedio.SelectedItem = periodista.Medio;
@@ -82,9 +83,10 @@ namespace FrmPrincipal
                 apellido = txtApellido.Text;
                 salario = double.Parse(txtSalario.Text);
                 tipo = (ETipo)cmbTipo.SelectedItem;
+                id = double.Parse(txtId.Text);
                 especializacion = txtEspecializacion.Text;
                 medio = (EMedios)cmbMedio.SelectedItem;
-                periodista = new Periodista(nombre, apellido, salario, tipo, especializacion, credibilidad, medio);
+                periodista = new Periodista(nombre, apellido, salario, tipo, id, especializacion, credibilidad, medio);
 
                 DialogResult = DialogResult.OK;
             }

@@ -38,13 +38,13 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(144, 288);
+            btnAgregar.Location = new Point(151, 329);
             btnAgregar.Size = new Size(102, 52);
             btnAgregar.Click += btnAgregar_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(428, 288);
+            btnCancelar.Location = new Point(450, 329);
             btnCancelar.Size = new Size(104, 52);
             btnCancelar.Click += btnCancelar_Click;
             // 
@@ -103,7 +103,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(706, 354);
+            ClientSize = new Size(706, 393);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);

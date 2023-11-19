@@ -17,7 +17,7 @@ namespace FrmPrincipal
     /// Permite ingresar y modificar datos específicos de un Cirujano, como la especialidad médica,
     /// cantidad de cirugías realizadas y el hospital en el que trabaja.
     /// </summary>
-    
+
     public partial class FrmCirujano : FrmTrabajador
     {
 
@@ -31,12 +31,13 @@ namespace FrmPrincipal
             get { return cirujano; }
         }
 
-        public FrmCirujano(Cirujano cirujano): this()
+        public FrmCirujano(Cirujano cirujano) : this()
         {
             txtNombre.Text = cirujano.Nombre;
             txtApellido.Text = cirujano.Apellido;
             txtSalario.Text = cirujano.Salario.ToString();
             cmbTipo.SelectedItem = cirujano.Tipo;
+            txtId.Text = cirujano.Id.ToString();
             txtEspecialidad.Text = cirujano.Especialidad;
             txtCirugias.Text = cirujano.Cirugias.ToString();
             cmbHospital.SelectedItem = cirujano.Hospital;
@@ -80,9 +81,10 @@ namespace FrmPrincipal
                 apellido = txtApellido.Text;
                 salario = double.Parse(txtSalario.Text);
                 tipo = (ETipo)cmbTipo.SelectedItem;
+                id = double.Parse(txtId.Text);
                 especialidad = txtEspecialidad.Text;
                 hospital = (EHospitales)cmbHospital.SelectedItem;
-                cirujano = new Cirujano(nombre, apellido, salario, tipo, especialidad, hospital, cirugias);
+                cirujano = new Cirujano(nombre, apellido, salario, tipo, id, especialidad, hospital, cirugias);
 
                 DialogResult = DialogResult.OK;
             }

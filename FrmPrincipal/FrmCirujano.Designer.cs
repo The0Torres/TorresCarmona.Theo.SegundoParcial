@@ -38,12 +38,12 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(177, 295);
+            btnAgregar.Location = new Point(138, 332);
             btnAgregar.Click += btnAgregar_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(451, 295);
+            btnCancelar.Location = new Point(467, 332);
             btnCancelar.Click += btnCancelar_Click;
             // 
             // txtCirugias
@@ -102,7 +102,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(681, 353);
+            ClientSize = new Size(681, 398);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);

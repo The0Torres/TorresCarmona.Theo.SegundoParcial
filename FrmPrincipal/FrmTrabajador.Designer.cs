@@ -38,6 +38,8 @@
             label3 = new Label();
             label4 = new Label();
             cmbTipo = new ComboBox();
+            label5 = new Label();
+            txtId = new TextBox();
             SuspendLayout();
             // 
             // btnAgregar
@@ -45,7 +47,7 @@
             btnAgregar.BackColor = SystemColors.ButtonFace;
             btnAgregar.FlatStyle = FlatStyle.Popup;
             btnAgregar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAgregar.Location = new Point(51, 295);
+            btnAgregar.Location = new Point(49, 342);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(90, 39);
             btnAgregar.TabIndex = 0;
@@ -57,7 +59,7 @@
             btnCancelar.BackColor = SystemColors.ButtonFace;
             btnCancelar.FlatStyle = FlatStyle.Popup;
             btnCancelar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCancelar.Location = new Point(250, 295);
+            btnCancelar.Location = new Point(250, 342);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(98, 39);
             btnCancelar.TabIndex = 1;
@@ -129,17 +131,36 @@
             // cmbTipo
             // 
             cmbTipo.FormattingEnabled = true;
-            cmbTipo.Location = new Point(49, 237);
+            cmbTipo.Location = new Point(51, 233);
             cmbTipo.Name = "cmbTipo";
             cmbTipo.Size = new Size(299, 23);
             cmbTipo.TabIndex = 10;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(51, 268);
+            label5.Name = "label5";
+            label5.Size = new Size(21, 16);
+            label5.TabIndex = 11;
+            label5.Text = "Id:";
+            // 
+            // txtId
+            // 
+            txtId.Location = new Point(49, 287);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(299, 23);
+            txtId.TabIndex = 12;
             // 
             // FrmTrabajador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
-            ClientSize = new Size(387, 358);
+            ClientSize = new Size(387, 398);
+            Controls.Add(txtId);
+            Controls.Add(label5);
             Controls.Add(cmbTipo);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -167,5 +188,7 @@
         public TextBox txtApellido;
         public TextBox txtSalario;
         public ComboBox cmbTipo;
+        private Label label5;
+        protected TextBox txtId;
     }
 }

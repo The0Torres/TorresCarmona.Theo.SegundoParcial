@@ -40,20 +40,20 @@
             this.hospital = EHospitales.Italiano;
         }
 
-        public Cirujano(string Nombre, string Apellido, double Salario,ETipo Tipo, string Especialidad)
-            : base(Nombre, Apellido, Salario, Tipo)
+        public Cirujano(string Nombre, string Apellido, double Salario,ETipo Tipo, double Id,string Especialidad)
+            : base(Nombre, Apellido, Salario, Tipo, Id)
         {
             this.especialidad = Especialidad;
         }
 
-        public Cirujano(string Nombre, string Apellido, double Salario,ETipo Tipo ,string Especialidad, EHospitales Hospital)
-            : this(Nombre, Apellido , Salario, Tipo, Especialidad)
+        public Cirujano(string Nombre, string Apellido, double Salario,ETipo Tipo, double Id,string Especialidad, EHospitales Hospital)
+            : this(Nombre, Apellido , Salario, Tipo, Id, Especialidad)
         {
             this.hospital = Hospital;
         }
 
-        public Cirujano(string Nombre, string Apellido, double Salario,ETipo Tipo ,string Especialidad, EHospitales Hospital, double Cirugias)
-            : this(Nombre, Apellido, Salario, Tipo, Especialidad, Hospital)
+        public Cirujano(string Nombre, string Apellido, double Salario,ETipo Tipo , double Id,string Especialidad, EHospitales Hospital, double Cirugias)
+            : this(Nombre, Apellido, Salario, Tipo, Id, Especialidad, Hospital)
         {
             this.cirugias = Cirugias;
         }
@@ -72,7 +72,7 @@
         public static bool operator ==(Cirujano cirujano1, Cirujano cirujano2)
         {
 
-            return cirujano1.Nombre == cirujano2.Nombre && cirujano1.Apellido == cirujano2.Apellido;
+            return cirujano1.Nombre == cirujano2.Nombre && cirujano1.Apellido == cirujano2.Apellido && cirujano1.Id == cirujano2.Id;
         }
 
         public static bool operator !=(Cirujano cirujano1, Cirujano cirujano2)

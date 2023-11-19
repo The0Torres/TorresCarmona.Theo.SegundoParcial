@@ -17,7 +17,7 @@ namespace FrmPrincipal
     /// Permite ingresar y modificar datos específicos de un Deportista, como el deporte practicado,
     /// cantidad de trofeos y ranking mundial.
     /// </summary>
-  
+
     public partial class FrmDeportista : FrmTrabajador
     {
         protected string deporte;
@@ -30,12 +30,13 @@ namespace FrmPrincipal
         }
 
 
-        public FrmDeportista(Deportista deportista) :this()
+        public FrmDeportista(Deportista deportista) : this()
         {
             txtNombre.Text = deportista.Nombre;
             txtApellido.Text = deportista.Apellido;
             txtSalario.Text = deportista.Salario.ToString();
             cmbTipo.SelectedItem = deportista.Tipo;
+            txtId.Text = deportista.Id.ToString();
             txtDeporte.Text = deportista.Deporte;
             txtTrofeos.Text = deportista.Trofeos.ToString();
             txtRanking.Text = deportista.RankingMundial.ToString();
@@ -76,8 +77,9 @@ namespace FrmPrincipal
                 apellido = txtApellido.Text;
                 salario = double.Parse(txtSalario.Text);
                 tipo = (ETipo)cmbTipo.SelectedItem;
+                id = double.Parse(txtId.Text);
                 deporte = txtDeporte.Text;
-                deportista = new Deportista(nombre, apellido, salario, tipo, deporte, trofeos, ranking);
+                deportista = new Deportista(nombre, apellido, salario, tipo, id, deporte, trofeos, ranking);
 
                 DialogResult = DialogResult.OK;
             }

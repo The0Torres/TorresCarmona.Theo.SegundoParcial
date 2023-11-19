@@ -20,7 +20,8 @@ namespace Laburos
         protected string nombre;
         protected string apellido;
         protected double salario;
-        protected ETipo tipo; 
+        protected ETipo tipo;
+        protected double id;
         
         public string Nombre
         { 
@@ -45,6 +46,11 @@ namespace Laburos
             get { return tipo; }
             set { tipo = value; }
         }
+        public double Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
 
         public Trabajador()
         {
@@ -52,6 +58,7 @@ namespace Laburos
             this.apellido = "N/N";
             this.salario = 1;
             this.tipo = ETipo.Tiempocompleto;
+            this.id = 0;    
         }
 
         public Trabajador(string Nombre, string Apellido)
@@ -66,17 +73,18 @@ namespace Laburos
             this.salario = Salario;
         }
 
-        public Trabajador(string Nombre, string Apellido, double Salario, ETipo Tipo)
+        public Trabajador(string Nombre, string Apellido, double Salario, ETipo Tipo, double Id)
             : this(Nombre, Apellido, Salario)
         {
             this.tipo = Tipo;
+            this.id = Id;
         }
 
         protected abstract void RealizarTarea();
 
         protected virtual string MostrarDatos()
         {
-            return $"Nombre: {Nombre} {Apellido} - Trabajador: {Tipo} - Sueldo: {Salario}$";
+            return $"Id: {Id} - Nombre: {Nombre} {Apellido} - Trabajador: {Tipo} - Sueldo: {Salario}$";
         }
         public override string ToString()
         {
@@ -90,7 +98,7 @@ namespace Laburos
 
         public static bool operator ==(Trabajador trabajador1, Trabajador trabajador2)
         {
-            return trabajador1.Nombre == trabajador2.Nombre && trabajador1.Apellido == trabajador2.Apellido;
+            return trabajador1.Nombre == trabajador2.Nombre && trabajador1.Apellido == trabajador2.Apellido && trabajador1.Id == trabajador2.Id;
         }
 
         public static bool operator !=(Trabajador trabajador1, Trabajador trabajador2)
@@ -106,7 +114,7 @@ namespace Laburos
             }
 
             Trabajador otroTrabajador = (Trabajador)obj;
-            return this.nombre == otroTrabajador.Nombre && this.apellido == otroTrabajador.Apellido;
+            return this.nombre == otroTrabajador.Nombre && this.apellido == otroTrabajador.Apellido && this.id == otroTrabajador.Id;
         }
 
     }
