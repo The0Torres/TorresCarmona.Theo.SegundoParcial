@@ -22,3 +22,4 @@ C:\Users\theo\SegundoParcial\TorresCarmona.Theo\obj\Debug\net6.0\TorresCarmona.T
 C:\Users\theo\SegundoParcial\TorresCarmona.Theo\obj\Debug\net6.0\ref\TorresCarmona.Theo.dll
 C:\Users\theo\SegundoParcial\TorresCarmona.Theo\obj\Debug\net6.0\TorresCarmona.Theo.Properties.Resources.resources
 C:\Users\theo\SegundoParcial\TorresCarmona.Theo\obj\Debug\net6.0\TorresCarmona.Theo.csproj.GenerateResource.cache
+C:\Users\theo\SegundoParcial\TorresCarmona.Theo\obj\Debug\net6.0\TorresCarmona.Theo.csproj.AssemblyReference.cache

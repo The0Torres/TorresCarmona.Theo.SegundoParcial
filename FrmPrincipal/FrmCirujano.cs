@@ -62,32 +62,32 @@ namespace FrmPrincipal
                 {
                     return;
                 }
-
-                if (!double.TryParse(this.txtCirugias.Text, out double cirugias) || cirugias < 0 || this.txtCirugias.Text.Contains("."))
+                else if (!double.TryParse(this.txtCirugias.Text, out double cirugias) || cirugias < 0 || this.txtCirugias.Text.Contains("."))
                 {
                     throw new DatosInvalidosException("Ingrese las cirugías hechas de forma correcta.");
                 }
-
-                if (string.IsNullOrWhiteSpace(txtEspecialidad.Text))
+                else if (string.IsNullOrWhiteSpace(txtEspecialidad.Text))
                 {
                     throw new DatosInvalidosException("Ingrese una especialidad.");
                 }
-
-                if (cmbHospital.SelectedItem == null)
+                else if (cmbHospital.SelectedItem == null)
                 {
                     throw new DatosInvalidosException("Seleccione un hospital.");
                 }
+                else
+                {
+                    nombre = txtNombre.Text;
+                    apellido = txtApellido.Text;
+                    salario = double.Parse(txtSalario.Text);
+                    tipo = (ETipo)cmbTipo.SelectedItem;
+                    id = double.Parse(txtId.Text);
+                    especialidad = txtEspecialidad.Text;
+                    hospital = (EHospitales)cmbHospital.SelectedItem;
+                    cirujano = new Cirujano(nombre, apellido, salario, tipo, id, especialidad, hospital, cirugias);
 
-                nombre = txtNombre.Text;
-                apellido = txtApellido.Text;
-                salario = double.Parse(txtSalario.Text);
-                tipo = (ETipo)cmbTipo.SelectedItem;
-                id = double.Parse(txtId.Text);
-                especialidad = txtEspecialidad.Text;
-                hospital = (EHospitales)cmbHospital.SelectedItem;
-                cirujano = new Cirujano(nombre, apellido, salario, tipo, id, especialidad, hospital, cirugias);
-
-                DialogResult = DialogResult.OK;
+                    DialogResult = DialogResult.OK;
+                }
+                
             }
             catch (DatosInvalidosException ex)
             {

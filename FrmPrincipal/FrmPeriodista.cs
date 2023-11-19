@@ -65,31 +65,35 @@ namespace FrmPrincipal
                     return;
                 }
 
-                if (!double.TryParse(this.txtCredibilidad.Text, out double credibilidad) || credibilidad < 0 || credibilidad > 100)
+                else if (!double.TryParse(this.txtCredibilidad.Text, out double credibilidad) || credibilidad < 0 || credibilidad > 100)
                 {
                     throw new DatosInvalidosException("Ingrese un porcentaje de credibilidad válido.");
                 }
 
-                if (string.IsNullOrWhiteSpace(txtEspecializacion.Text))
+                else if (string.IsNullOrWhiteSpace(txtEspecializacion.Text))
                 {
                     throw new DatosInvalidosException("Ingrese una especialización.");
                 }
 
-                if (cmbMedio.SelectedItem == null)
+                else if (cmbMedio.SelectedItem == null)
                 {
                     throw new DatosInvalidosException("Seleccione un medio.");
                 }
+                else
+                {
+                    nombre = txtNombre.Text;
+                    apellido = txtApellido.Text;
+                    salario = double.Parse(txtSalario.Text);
+                    tipo = (ETipo)cmbTipo.SelectedItem;
+                    id = double.Parse(txtId.Text);
+                    especializacion = txtEspecializacion.Text;
+                    medio = (EMedios)cmbMedio.SelectedItem;
+                    periodista = new Periodista(nombre, apellido, salario, tipo, id, especializacion, credibilidad, medio);
 
-                nombre = txtNombre.Text;
-                apellido = txtApellido.Text;
-                salario = double.Parse(txtSalario.Text);
-                tipo = (ETipo)cmbTipo.SelectedItem;
-                id = double.Parse(txtId.Text);
-                especializacion = txtEspecializacion.Text;
-                medio = (EMedios)cmbMedio.SelectedItem;
-                periodista = new Periodista(nombre, apellido, salario, tipo, id, especializacion, credibilidad, medio);
+                    DialogResult = DialogResult.OK;
+                }
 
-                DialogResult = DialogResult.OK;
+                
             }
             catch (DatosInvalidosException ex)
             {

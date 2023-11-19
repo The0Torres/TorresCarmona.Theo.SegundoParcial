@@ -58,31 +58,31 @@ namespace FrmPrincipal
                 {
                     return;
                 }
-
-                if (!double.TryParse(this.txtTrofeos.Text, out double trofeos) || trofeos < 0 || this.txtTrofeos.Text.Contains("."))
+                else if (!double.TryParse(this.txtTrofeos.Text, out double trofeos) || trofeos < 0 || this.txtTrofeos.Text.Contains("."))
                 {
                     throw new DatosInvalidosException("Ingrese una cantidad de trofeos válida.");
                 }
-
-                if (!int.TryParse(this.txtRanking.Text, out int ranking) || ranking <= 0 || this.txtRanking.Text.Contains("."))
+                else if (!int.TryParse(this.txtRanking.Text, out int ranking) || ranking <= 0 || this.txtRanking.Text.Contains("."))
                 {
                     throw new DatosInvalidosException("Ingrese un ranking mundial válido.");
                 }
-
-                if (string.IsNullOrWhiteSpace(txtDeporte.Text))
+                else if (string.IsNullOrWhiteSpace(txtDeporte.Text))
                 {
                     throw new DatosInvalidosException("Ingrese una especialidad.");
                 }
+                else
+                {
+                    nombre = txtNombre.Text;
+                    apellido = txtApellido.Text;
+                    salario = double.Parse(txtSalario.Text);
+                    tipo = (ETipo)cmbTipo.SelectedItem;
+                    id = double.Parse(txtId.Text);
+                    deporte = txtDeporte.Text;
+                    deportista = new Deportista(nombre, apellido, salario, tipo, id, deporte, trofeos, ranking);
 
-                nombre = txtNombre.Text;
-                apellido = txtApellido.Text;
-                salario = double.Parse(txtSalario.Text);
-                tipo = (ETipo)cmbTipo.SelectedItem;
-                id = double.Parse(txtId.Text);
-                deporte = txtDeporte.Text;
-                deportista = new Deportista(nombre, apellido, salario, tipo, id, deporte, trofeos, ranking);
-
-                DialogResult = DialogResult.OK;
+                    DialogResult = DialogResult.OK;
+                }
+               
             }
             catch (DatosInvalidosException ex)
             {
