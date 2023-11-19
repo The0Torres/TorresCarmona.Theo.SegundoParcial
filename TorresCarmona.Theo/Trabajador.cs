@@ -98,7 +98,7 @@ namespace Laburos
 
         public static bool operator ==(Trabajador trabajador1, Trabajador trabajador2)
         {
-            return trabajador1.Nombre == trabajador2.Nombre && trabajador1.Apellido == trabajador2.Apellido && trabajador1.Id == trabajador2.Id;
+            return trabajador1.Nombre == trabajador2.Nombre && trabajador1.Apellido == trabajador2.Apellido || trabajador1.Id == trabajador2.Id;
         }
 
         public static bool operator !=(Trabajador trabajador1, Trabajador trabajador2)
@@ -114,7 +114,7 @@ namespace Laburos
             }
 
             Trabajador otroTrabajador = (Trabajador)obj;
-            return this.nombre == otroTrabajador.Nombre && this.apellido == otroTrabajador.Apellido && this.id == otroTrabajador.Id;
+            return this.nombre == otroTrabajador.Nombre && this.apellido == otroTrabajador.Apellido || this.id == otroTrabajador.Id;
         }
 
     }

@@ -72,7 +72,7 @@
         public static bool operator ==(Cirujano cirujano1, Cirujano cirujano2)
         {
 
-            return cirujano1.Nombre == cirujano2.Nombre && cirujano1.Apellido == cirujano2.Apellido && cirujano1.Id == cirujano2.Id;
+            return cirujano1.Nombre == cirujano2.Nombre && cirujano1.Apellido == cirujano2.Apellido || cirujano1.Id == cirujano2.Id;
         }
 
         public static bool operator !=(Cirujano cirujano1, Cirujano cirujano2)

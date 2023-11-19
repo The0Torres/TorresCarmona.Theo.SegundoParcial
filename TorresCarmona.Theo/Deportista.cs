@@ -71,7 +71,7 @@
 
         public static bool operator ==(Deportista deportista1, Deportista deportista2)
         {
-            return deportista1.Nombre == deportista2.Nombre && deportista1.Apellido == deportista2.Apellido && deportista1.Id == deportista2.Id;
+            return deportista1.Nombre == deportista2.Nombre && deportista1.Apellido == deportista2.Apellido || deportista1.Id == deportista2.Id;
         }
 
         public static bool operator !=(Deportista deportista1, Deportista deportista2)
