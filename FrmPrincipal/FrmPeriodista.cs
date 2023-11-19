@@ -39,6 +39,7 @@ namespace FrmPrincipal
             txtSalario.Text = periodista.Salario.ToString();
             cmbTipo.SelectedItem = periodista.Tipo;
             txtId.Text = periodista.Id.ToString();
+            txtId.Enabled = false;
             txtEspecializacion.Text = periodista.Especializacion;
             txtCredibilidad.Text = periodista.Credibilidad.ToString();
             cmbMedio.SelectedItem = periodista.Medio;

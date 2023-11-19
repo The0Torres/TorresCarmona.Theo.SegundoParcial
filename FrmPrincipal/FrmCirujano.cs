@@ -38,6 +38,7 @@ namespace FrmPrincipal
             txtSalario.Text = cirujano.Salario.ToString();
             cmbTipo.SelectedItem = cirujano.Tipo;
             txtId.Text = cirujano.Id.ToString();
+            txtId.Enabled = false;
             txtEspecialidad.Text = cirujano.Especialidad;
             txtCirugias.Text = cirujano.Cirugias.ToString();
             cmbHospital.SelectedItem = cirujano.Hospital;

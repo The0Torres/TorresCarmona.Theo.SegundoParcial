@@ -37,6 +37,7 @@ namespace FrmPrincipal
             txtSalario.Text = deportista.Salario.ToString();
             cmbTipo.SelectedItem = deportista.Tipo;
             txtId.Text = deportista.Id.ToString();
+            txtId.Enabled = false;
             txtDeporte.Text = deportista.Deporte;
             txtTrofeos.Text = deportista.Trofeos.ToString();
             txtRanking.Text = deportista.RankingMundial.ToString();
