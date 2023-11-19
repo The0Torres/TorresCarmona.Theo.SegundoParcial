@@ -11,7 +11,7 @@ namespace SindicatoTest
         {
             // Arrange
             Sindicato sindicato = new Sindicato();
-            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 0,"Deportes", 90, EMedios.Television);
+            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 1,"Deportes", 90, EMedios.Television);
 
             // Act
             sindicato += periodista;
@@ -25,7 +25,7 @@ namespace SindicatoTest
         {
             // Arrange
             Sindicato sindicato = new Sindicato();
-            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 0, "Deportes", 90, EMedios.Television);
+            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 1, "Deportes", 90, EMedios.Television);
             sindicato += periodista;
 
             // Act
@@ -40,8 +40,8 @@ namespace SindicatoTest
         {
             // Arrange
             Sindicato sindicato = new Sindicato();
-            Periodista periodista1 = new Periodista("Zeta", "Apellido", 25, ETipo.Tiempocompleto, 0, "Deportes", 90, EMedios.Television);
-            Periodista periodista2 = new Periodista("Alfa", "Apellido", 30, ETipo.Tiempocompleto, 0, "Política", 85, EMedios.Radio);
+            Periodista periodista1 = new Periodista("Zeta", "Apellido", 25, ETipo.Tiempocompleto, 1, "Deportes", 90, EMedios.Television);
+            Periodista periodista2 = new Periodista("Alfa", "Apellido", 30, ETipo.Tiempocompleto, 1, "Política", 85, EMedios.Radio);
             sindicato += periodista1;
             sindicato += periodista2;
 

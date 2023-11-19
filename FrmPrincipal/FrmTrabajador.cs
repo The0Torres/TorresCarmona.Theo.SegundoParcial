@@ -59,8 +59,8 @@ namespace FrmPrincipal
                                         MessageBoxIcon.Warning);
                 return false;
             }
-            if (!double.TryParse(this.txtId.Text, out double id) || salario < 0)
-            {
+            if (!double.TryParse(this.txtId.Text, out double id) || id < 1)
+            { 
                 MessageBox.Show("Ingrese un Id valido.",
                                         "Advertencia",
                                         MessageBoxButtons.OK,
