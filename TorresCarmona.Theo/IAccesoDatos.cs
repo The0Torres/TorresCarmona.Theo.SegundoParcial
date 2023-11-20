@@ -15,5 +15,11 @@ namespace Laburos
         bool ModificarPeriodista(Periodista periodista);
         bool ModificarCirujano(Cirujano cirujano);
         bool ModificarDeportista(Deportista deportista);
+
+        List<Periodista> ObtenerListaPeriodistas();
+        List<Cirujano> ObtenerListaCirujanos();
+        List<Deportista> ObtenerListaDeportistas();
+
+        void CargarLista<T>(List<T> lista, string consulta) where T : class, new();
     }
 }

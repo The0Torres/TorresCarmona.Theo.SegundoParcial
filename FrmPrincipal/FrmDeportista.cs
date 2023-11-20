@@ -21,6 +21,7 @@ namespace FrmPrincipal
     public partial class FrmDeportista : FrmTrabajador
     {
         protected string deporte;
+        bool modificar = false;
 
         private Deportista deportista;
 
@@ -38,6 +39,7 @@ namespace FrmPrincipal
             cmbTipo.SelectedItem = deportista.Tipo;
             txtId.Text = deportista.Id.ToString();
             txtId.Enabled = false;
+            modificar = true;
             txtDeporte.Text = deportista.Deporte;
             txtTrofeos.Text = deportista.Trofeos.ToString();
             txtRanking.Text = deportista.RankingMundial.ToString();
@@ -68,7 +70,7 @@ namespace FrmPrincipal
                 }
                 else if (string.IsNullOrWhiteSpace(txtDeporte.Text))
                 {
-                    throw new DatosInvalidosException("Ingrese una especialidad.");
+                    throw new DatosInvalidosException("Ingrese un deporte.");
                 }
                 else
                 {
@@ -78,14 +80,21 @@ namespace FrmPrincipal
                     tipo = (ETipo)cmbTipo.SelectedItem;
                     id = double.Parse(txtId.Text);
                     deporte = txtDeporte.Text;
-                    deportista = new Deportista(nombre, apellido, salario, tipo, id, deporte, trofeos, ranking);
 
                     AccesoDatos accesoDatos = new AccesoDatos();
+                    List<Deportista> deportistasEnBaseDeDatos = accesoDatos.ObtenerListaDeportistas();
+                    if (deportistasEnBaseDeDatos.Any(d => d.Id == id) && modificar == false)
+                    {
+                        throw new DatosInvalidosException("El ID ya existe en la base de datos. Ingrese un ID único.");
+                    }
+
+                    deportista = new Deportista(nombre, apellido, salario, tipo, id, deporte, trofeos, ranking);
+
                     accesoDatos.InsertarDeportista(deportista);
 
                     DialogResult = DialogResult.OK;
                 }
-               
+
             }
             catch (DatosInvalidosException ex)
             {

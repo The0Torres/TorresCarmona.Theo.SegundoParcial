@@ -11,7 +11,7 @@ namespace SindicatoTest
         {
             // Arrange
             AccesoDatos accesoDatos = new AccesoDatos();
-            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 10, "Deportes", 90, EMedios.Television);
+            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 1, "Deportes", 90, EMedios.Television);
 
             // Act
             bool resultado = accesoDatos.InsertarPeriodista(periodista);
@@ -22,24 +22,24 @@ namespace SindicatoTest
         }
 
         [TestMethod]
-        public void TestModificarDeportista()
+        public void TestModificarPeriodista()
         {
             // Arrange
             AccesoDatos accesoDatos = new AccesoDatos();
-            Deportista deportista = new Deportista
+            Periodista periodista = new Periodista
             {
                 Nombre = "NuevoNombre",
                 Apellido = "NuevoApellido",
                 Salario = 60000,
                 Tipo = ETipo.Tiempocompleto,
                 Id = 1, 
-                Deporte = "NuevoDeporte",
-                Trofeos = 20,
-                RankingMundial = 5
+                Especializacion = "NuevoDeporte",
+                Credibilidad = 20,
+                Medio = EMedios.Television,
             };
 
             // Act
-            bool resultado = accesoDatos.ModificarDeportista(deportista);
+            bool resultado = accesoDatos.ModificarPeriodista(periodista);
 
             // Assert
             Assert.IsTrue(resultado);
@@ -50,7 +50,7 @@ namespace SindicatoTest
         {
             // Arrange
             AccesoDatos accesoDatos = new AccesoDatos();
-            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 10, "Deportes", 90, EMedios.Television);
+            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 1, "Deportes", 90, EMedios.Television);
             accesoDatos.InsertarPeriodista(periodista);
 
             // Act
@@ -58,6 +58,21 @@ namespace SindicatoTest
 
             // Assert
             Assert.IsTrue(resultado);
+        }
+
+        [TestMethod]
+        public void TestCargarListaDeportistas()
+        {
+            // Arrange
+            AccesoDatos accesoDatos = new AccesoDatos();
+            List<Deportista> listaDeportistas = new List<Deportista>();
+
+            // Act
+            accesoDatos.CargarLista(listaDeportistas, "SELECT nombre, apellido, salario, tipo, id, deporte, trofeos, rankingMundial FROM Deportista");
+
+            // Assert
+            Assert.IsNotNull(listaDeportistas);
+            Assert.IsTrue(listaDeportistas.Count > 0);
         }
 
     }

@@ -24,6 +24,7 @@ namespace FrmPrincipal
 
         protected string especializacion;
         protected EMedios medio;
+        bool modificar = false;
 
         private Periodista periodista;
 
@@ -40,6 +41,7 @@ namespace FrmPrincipal
             cmbTipo.SelectedItem = periodista.Tipo;
             txtId.Text = periodista.Id.ToString();
             txtId.Enabled = false;
+            modificar = true;
             txtEspecializacion.Text = periodista.Especializacion;
             txtCredibilidad.Text = periodista.Credibilidad.ToString();
             cmbMedio.SelectedItem = periodista.Medio;
@@ -88,15 +90,21 @@ namespace FrmPrincipal
                     id = double.Parse(txtId.Text);
                     especializacion = txtEspecializacion.Text;
                     medio = (EMedios)cmbMedio.SelectedItem;
-                    periodista = new Periodista(nombre, apellido, salario, tipo, id, especializacion, credibilidad, medio);
 
                     AccesoDatos accesoDatos = new AccesoDatos();
+                    List<Periodista> periodistasEnBaseDeDatos = accesoDatos.ObtenerListaPeriodistas();
+                    if (periodistasEnBaseDeDatos.Any(p => p.Id == id) && modificar == false)
+                    {
+                        throw new DatosInvalidosException("El ID ya existe en la base de datos. Ingrese un ID único.");
+                    }
+
+                    periodista = new Periodista(nombre, apellido, salario, tipo, id, especializacion, credibilidad, medio);
+
                     accesoDatos.InsertarPeriodista(periodista);
 
                     DialogResult = DialogResult.OK;
                 }
 
-                
             }
             catch (DatosInvalidosException ex)
             {

@@ -369,7 +369,7 @@ namespace Laburos
             }
             catch (Exception ex)
             {
-
+                // Manejo de excepciones
             }
             finally
             {
@@ -400,6 +400,5 @@ namespace Laburos
             CargarLista(lista, "SELECT nombre, apellido, salario, tipo, id, deporte, trofeos, rankingMundial FROM Deportista");
             return lista;
         }
-
     }
 }

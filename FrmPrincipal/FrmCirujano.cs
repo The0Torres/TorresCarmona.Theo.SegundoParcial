@@ -23,6 +23,7 @@ namespace FrmPrincipal
 
         protected EHospitales hospital;
         protected string especialidad;
+        bool modificar = false;
 
         private Cirujano cirujano;
 
@@ -39,6 +40,7 @@ namespace FrmPrincipal
             cmbTipo.SelectedItem = cirujano.Tipo;
             txtId.Text = cirujano.Id.ToString();
             txtId.Enabled = false;
+            modificar = true;
             txtEspecialidad.Text = cirujano.Especialidad;
             txtCirugias.Text = cirujano.Cirugias.ToString();
             cmbHospital.SelectedItem = cirujano.Hospital;
@@ -83,9 +85,16 @@ namespace FrmPrincipal
                     id = double.Parse(txtId.Text);
                     especialidad = txtEspecialidad.Text;
                     hospital = (EHospitales)cmbHospital.SelectedItem;
-                    cirujano = new Cirujano(nombre, apellido, salario, tipo, id, especialidad, hospital, cirugias);
 
                     AccesoDatos accesoDatos = new AccesoDatos();
+                    List<Cirujano> cirujanosEnBaseDeDatos = accesoDatos.ObtenerListaCirujanos();
+                    if (cirujanosEnBaseDeDatos.Any(c => c.Id == id) && modificar == false)
+                    {
+                        throw new DatosInvalidosException("El ID ya existe en la base de datos. Ingrese un ID único.");
+                    }
+
+                    cirujano = new Cirujano(nombre, apellido, salario, tipo, id, especialidad, hospital, cirugias);
+
                     accesoDatos.InsertarCirujano(cirujano);
 
                     DialogResult = DialogResult.OK;
