@@ -180,7 +180,7 @@ namespace Laburos
 
                 int filasAfectadas = this.comando.ExecuteNonQuery();
 
-                if (filasAfectadas > 0)
+                if (filasAfectadas == 1)
                 {
                     retorno = true;
                 }
@@ -218,7 +218,7 @@ namespace Laburos
 
                 int filasAfectadas = this.comando.ExecuteNonQuery();
 
-                if (filasAfectadas > 0)
+                if (filasAfectadas == 1)
                 {
                     retorno = true;
                 }
@@ -256,7 +256,7 @@ namespace Laburos
 
                 int filasAfectadas = this.comando.ExecuteNonQuery();
 
-                if (filasAfectadas > 0)
+                if (filasAfectadas == 1)
                 {
                     retorno = true;
                 }

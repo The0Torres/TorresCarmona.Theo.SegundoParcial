@@ -106,6 +106,7 @@ namespace FrmPrincipal
                     {
                         Sindicato.Trabajadores[indice] = frmdeportista.Deportista;
 
+                        // Modificar en la base de datos
                         AccesoDatos accesoDatos = new AccesoDatos();
                         accesoDatos.ModificarDeportista(frmdeportista.Deportista);
                     }
