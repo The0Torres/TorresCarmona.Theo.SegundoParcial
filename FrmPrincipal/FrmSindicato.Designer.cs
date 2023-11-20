@@ -116,7 +116,7 @@
             // 
             lblUsuario.AutoSize = true;
             lblUsuario.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblUsuario.Location = new Point(436, 5);
+            lblUsuario.Location = new Point(332, 5);
             lblUsuario.Name = "lblUsuario";
             lblUsuario.Size = new Size(91, 16);
             lblUsuario.TabIndex = 6;

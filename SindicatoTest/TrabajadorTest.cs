@@ -67,6 +67,5 @@ namespace SindicatoTest
             Assert.IsTrue(resultado);
 
         }
-
     }
 }

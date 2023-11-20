@@ -12,7 +12,7 @@ namespace FrmPrincipal
     /// funcionalidades como agregar, modificar, eliminar y ordenar trabajadores.
     /// También ofrece la opción de cargar y guardar datos desde/hacia archivos XML.
     /// </summary>
-    
+
     public partial class FrmSindicato : Form
     {
         DateTime fechaActual = DateTime.Now;
@@ -42,7 +42,7 @@ namespace FrmPrincipal
                 btnAgregar.Hide();
                 btnModificar.Hide();
             }
-            else if(usuario.perfil == "supervisor")
+            else if (usuario.perfil == "supervisor")
             {
                 btnEliminar.Hide();
             }
@@ -148,6 +148,24 @@ namespace FrmPrincipal
 
                 if (result == DialogResult.Yes)
                 {
+
+                    if (trabajador is Periodista)
+                    {
+
+                        AccesoDatos accesoDatos = new AccesoDatos();
+                        accesoDatos.EliminarPeriodista((Periodista)trabajador);
+                    }
+                    else if (trabajador is Cirujano)
+                    {
+                        AccesoDatos accesoDatos = new AccesoDatos();
+                        accesoDatos.EliminarCirujano((Cirujano)trabajador);
+                    }
+                    else if (trabajador is Deportista)
+                    {
+                        AccesoDatos accesoDatos = new AccesoDatos();
+                        accesoDatos.EliminarDeportista((Deportista)trabajador);
+                    }
+
                     Sindicato -= trabajador;
                     this.ActualizarVisor();
                 }
@@ -169,7 +187,7 @@ namespace FrmPrincipal
         {
             string datos = usuario.ToString();
 
-            lblUsuario.Text = $"Usuario: {this.usuario.nombre} - Fecha: {fechaActual}";
+            lblUsuario.Text = $"Perfil: {this.usuario.perfil} - Usuario: {this.usuario.nombre} - Fecha: {fechaActual}";
             string logFilePath = "usuarios.log";
             string entrada = $"{fechaActual.ToString("yyyy-MM-dd HH:mm:ss")} - {datos}\n";
 

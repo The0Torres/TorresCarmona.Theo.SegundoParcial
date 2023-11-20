@@ -23,29 +23,6 @@ namespace Laburos
             this.conexion = new SqlConnection(cadenaConexion);
         }
 
-        public bool PruebaConexion()
-        {
-            bool retorno = false;
-
-            try
-            {
-                this.conexion.Open();
-                retorno = true;
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-                if (this.conexion.State == System.Data.ConnectionState.Open)
-                {
-                    this.conexion.Close();
-                }
-            }
-            return retorno;
-        }
-
         public bool InsertarPeriodista(Periodista periodista)
         {
             bool retorno = false;
@@ -185,7 +162,118 @@ namespace Laburos
             return retorno;
         }
 
+        public bool EliminarPeriodista(Periodista periodista)
+        {
+            bool retorno = false;
 
+            try
+            {
+                this.comando = new SqlCommand();
+                this.comando.Parameters.Clear();
+                this.comando.Parameters.AddWithValue("@id", (int)periodista.Id);
 
+                this.comando.CommandType = System.Data.CommandType.Text;
+                this.comando.CommandText = "DELETE FROM Periodista WHERE id = @id";
+                this.comando.Connection = this.conexion;
+
+                this.conexion.Open();
+
+                int filasAfectadas = this.comando.ExecuteNonQuery();
+
+                if (filasAfectadas > 0)
+                {
+                    retorno = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                if (this.conexion.State == System.Data.ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+
+            return retorno;
+        }
+
+        public bool EliminarCirujano(Cirujano cirujano)
+        {
+            bool retorno = false;
+
+            try
+            {
+                this.comando = new SqlCommand();
+                this.comando.Parameters.Clear();
+                this.comando.Parameters.AddWithValue("@id", (int)cirujano.Id);
+
+                this.comando.CommandType = System.Data.CommandType.Text;
+                this.comando.CommandText = "DELETE FROM Cirujano WHERE id = @id";
+                this.comando.Connection = this.conexion;
+
+                this.conexion.Open();
+
+                int filasAfectadas = this.comando.ExecuteNonQuery();
+
+                if (filasAfectadas > 0)
+                {
+                    retorno = true;
+                }
+            }
+            catch (Exception ex)
+            {
+ 
+            }
+            finally
+            {
+                if (this.conexion.State == System.Data.ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+
+            return retorno;
+        }
+
+        public bool EliminarDeportista(Deportista deportista)
+        {
+            bool retorno = false;
+
+            try
+            {
+                this.comando = new SqlCommand();
+                this.comando.Parameters.Clear();
+                this.comando.Parameters.AddWithValue("@id", (int)deportista.Id);
+
+                this.comando.CommandType = System.Data.CommandType.Text;
+                this.comando.CommandText = "DELETE FROM Deportista WHERE id = @id";
+                this.comando.Connection = this.conexion;
+
+                this.conexion.Open();
+
+                int filasAfectadas = this.comando.ExecuteNonQuery();
+
+                if (filasAfectadas > 0)
+                {
+                    retorno = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                if (this.conexion.State == System.Data.ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+
+            return retorno;
+        }
     }
 }
