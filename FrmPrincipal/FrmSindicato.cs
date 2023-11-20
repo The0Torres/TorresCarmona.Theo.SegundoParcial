@@ -227,41 +227,32 @@ namespace FrmPrincipal
             try
             {
                 AccesoDatos accesoDatos = new AccesoDatos();
-                List<Periodista> listaPeriodistasCargados = accesoDatos.ObtenerListaPeriodistas();
-                List<Deportista> listaDeportistasCargados = accesoDatos.ObtenerListaDeportistas();
-                List<Cirujano> listaCirujanosCargados = accesoDatos.ObtenerListaCirujanos();
 
-                if (listaPeriodistasCargados.Count > 0)
-                {
-                    foreach (Periodista periodista in listaPeriodistasCargados)
-                    {
-                        Sindicato += periodista;
-                    }
+                List<Periodista> listaPeriodistasCargados = new List<Periodista>();
+                accesoDatos.CargarLista(listaPeriodistasCargados, "SELECT nombre, apellido, salario, tipo, id, especializacion, credibilidad, medio FROM Periodista");
 
-                    ActualizarVisor();
-                }
-                if (listaDeportistasCargados.Count > 0)
-                {
-                    foreach (Deportista deportista in listaDeportistasCargados)
-                    {
-                        Sindicato += deportista;
-                    }
+                List<Cirujano> listaCirujanosCargados = new List<Cirujano>();
+                accesoDatos.CargarLista(listaCirujanosCargados, "SELECT nombre, apellido, salario, tipo, id, especialidad, cirugias, hospital FROM Cirujano");
 
-                    ActualizarVisor();
-                }
-                if (listaCirujanosCargados.Count > 0)
-                {
-                    foreach (Cirujano cirujano in listaCirujanosCargados)
-                    {
-                        Sindicato += cirujano;
-                    }
+                List<Deportista> listaDeportistasCargados = new List<Deportista>();
+                accesoDatos.CargarLista(listaDeportistasCargados, "SELECT nombre, apellido, salario, tipo, id, deporte, trofeos, rankingMundial FROM Deportista");
 
-                    ActualizarVisor();
-                }
-                else
+                foreach (Periodista periodista in listaPeriodistasCargados)
                 {
-                    MessageBox.Show("No se encontraron datos válidos.", "Datos Vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Sindicato += periodista;
                 }
+
+                foreach (Cirujano cirujano in listaCirujanosCargados)
+                {
+                    Sindicato += cirujano;
+                }
+
+                foreach (Deportista deportista in listaDeportistasCargados)
+                {
+                    Sindicato += deportista;
+                }
+
+                ActualizarVisor();
             }
             catch (Exception ex)
             {
