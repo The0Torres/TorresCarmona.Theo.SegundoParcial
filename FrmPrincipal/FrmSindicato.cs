@@ -155,30 +155,30 @@ namespace FrmPrincipal
 
                 if (result == DialogResult.Yes)
                 {
-
                     if (trabajador is Periodista)
                     {
 
                         AccesoDatos accesoDatos = new AccesoDatos();
-                        accesoDatos.EliminarPeriodista((Periodista)trabajador);
+                        accesoDatos.EliminarRegistro((Periodista)trabajador);
                     }
                     else if (trabajador is Cirujano)
                     {
                         AccesoDatos accesoDatos = new AccesoDatos();
-                        accesoDatos.EliminarCirujano((Cirujano)trabajador);
+                        accesoDatos.EliminarRegistro((Cirujano)trabajador);
                     }
                     else if (trabajador is Deportista)
                     {
                         AccesoDatos accesoDatos = new AccesoDatos();
-                        accesoDatos.EliminarDeportista((Deportista)trabajador);
+                        accesoDatos.EliminarRegistro((Deportista)trabajador);
                     }
 
                     Sindicato -= trabajador;
                     this.ActualizarVisor();
                 }
-            }
 
-        }
+                
+            }
+        }      
 
         private void btnOrdenar_Click(object sender, EventArgs e)
         {

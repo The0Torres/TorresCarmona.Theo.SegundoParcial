@@ -162,7 +162,7 @@ namespace Laburos
             return retorno;
         }
 
-        public bool EliminarPeriodista(Periodista periodista)
+        public bool EliminarRegistro<T>(T entidad) where T : class
         {
             bool retorno = false;
 
@@ -170,10 +170,10 @@ namespace Laburos
             {
                 this.comando = new SqlCommand();
                 this.comando.Parameters.Clear();
-                this.comando.Parameters.AddWithValue("@id", (int)periodista.Id);
+                this.comando.Parameters.AddWithValue("@id", entidad.GetType().GetProperty("Id").GetValue(entidad));
 
                 this.comando.CommandType = System.Data.CommandType.Text;
-                this.comando.CommandText = "DELETE FROM Periodista WHERE id = @id";
+                this.comando.CommandText = $"DELETE FROM {typeof(T).Name} WHERE id = @id";
                 this.comando.Connection = this.conexion;
 
                 this.conexion.Open();
@@ -187,7 +187,7 @@ namespace Laburos
             }
             catch (Exception ex)
             {
-               
+                // Manejar la excepción, si es necesario
             }
             finally
             {
@@ -200,81 +200,6 @@ namespace Laburos
             return retorno;
         }
 
-        public bool EliminarCirujano(Cirujano cirujano)
-        {
-            bool retorno = false;
-
-            try
-            {
-                this.comando = new SqlCommand();
-                this.comando.Parameters.Clear();
-                this.comando.Parameters.AddWithValue("@id", (int)cirujano.Id);
-
-                this.comando.CommandType = System.Data.CommandType.Text;
-                this.comando.CommandText = "DELETE FROM Cirujano WHERE id = @id";
-                this.comando.Connection = this.conexion;
-
-                this.conexion.Open();
-
-                int filasAfectadas = this.comando.ExecuteNonQuery();
-
-                if (filasAfectadas == 1)
-                {
-                    retorno = true;
-                }
-            }
-            catch (Exception ex)
-            {
- 
-            }
-            finally
-            {
-                if (this.conexion.State == System.Data.ConnectionState.Open)
-                {
-                    this.conexion.Close();
-                }
-            }
-
-            return retorno;
-        }
-
-        public bool EliminarDeportista(Deportista deportista)
-        {
-            bool retorno = false;
-
-            try
-            {
-                this.comando = new SqlCommand();
-                this.comando.Parameters.Clear();
-                this.comando.Parameters.AddWithValue("@id", (int)deportista.Id);
-
-                this.comando.CommandType = System.Data.CommandType.Text;
-                this.comando.CommandText = "DELETE FROM Deportista WHERE id = @id";
-                this.comando.Connection = this.conexion;
-
-                this.conexion.Open();
-
-                int filasAfectadas = this.comando.ExecuteNonQuery();
-
-                if (filasAfectadas == 1)
-                {
-                    retorno = true;
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-                if (this.conexion.State == System.Data.ConnectionState.Open)
-                {
-                    this.conexion.Close();
-                }
-            }
-
-            return retorno;
-        }
 
         public bool ModificarPeriodista(Periodista periodista)
         {

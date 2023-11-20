@@ -11,7 +11,7 @@ namespace SindicatoTest
         {
             // Arrange
             AccesoDatos accesoDatos = new AccesoDatos();
-            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 7, "Deportes", 90, EMedios.Television);
+            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 10, "Deportes", 90, EMedios.Television);
 
             // Act
             bool resultado = accesoDatos.InsertarPeriodista(periodista);
@@ -34,7 +34,7 @@ namespace SindicatoTest
                 Tipo = ETipo.Tiempocompleto,
                 Id = 1, 
                 Deporte = "NuevoDeporte",
-                Trofeos = 10,
+                Trofeos = 20,
                 RankingMundial = 5
             };
 
@@ -50,11 +50,11 @@ namespace SindicatoTest
         {
             // Arrange
             AccesoDatos accesoDatos = new AccesoDatos();
-            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 30, "Deportes", 90, EMedios.Television);
+            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 10, "Deportes", 90, EMedios.Television);
             accesoDatos.InsertarPeriodista(periodista);
 
             // Act
-            bool resultado = accesoDatos.EliminarPeriodista(periodista);
+            bool resultado = accesoDatos.EliminarRegistro(periodista);
 
             // Assert
             Assert.IsTrue(resultado);
