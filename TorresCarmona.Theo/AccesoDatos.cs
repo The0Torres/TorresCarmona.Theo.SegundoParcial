@@ -4,7 +4,7 @@ using Microsoft.Data.SqlClient;
 
 namespace Laburos
 {
-    public class AccesoDatos
+    public class AccesoDatos: IAccesoDatos
     {
         private SqlConnection conexion;
         private static string cadenaConexion;
