@@ -79,9 +79,11 @@ namespace FrmPrincipal
                     if (resultado == DialogResult.OK)
                     {
                         Sindicato.Trabajadores[indice] = frmperiodista.Periodista;
+
+                        AccesoDatos accesoDatos = new AccesoDatos();
+                        accesoDatos.ModificarPeriodista(frmperiodista.Periodista);
                     }
                 }
-
                 else if (trabajador is Cirujano)
                 {
                     FrmCirujano frmcirujano = new FrmCirujano((Cirujano)trabajador);
@@ -90,9 +92,11 @@ namespace FrmPrincipal
                     if (resultado == DialogResult.OK)
                     {
                         Sindicato.Trabajadores[indice] = frmcirujano.Cirujano;
+
+                        AccesoDatos accesoDatos = new AccesoDatos();
+                        accesoDatos.ModificarCirujano(frmcirujano.Cirujano);
                     }
                 }
-
                 else if (trabajador is Deportista)
                 {
                     FrmDeportista frmdeportista = new FrmDeportista((Deportista)trabajador);
@@ -101,11 +105,13 @@ namespace FrmPrincipal
                     if (resultado == DialogResult.OK)
                     {
                         Sindicato.Trabajadores[indice] = frmdeportista.Deportista;
+
+                        AccesoDatos accesoDatos = new AccesoDatos();
+                        accesoDatos.ModificarDeportista(frmdeportista.Deportista);
                     }
                 }
 
                 this.ActualizarVisor();
-
             }
 
         }
