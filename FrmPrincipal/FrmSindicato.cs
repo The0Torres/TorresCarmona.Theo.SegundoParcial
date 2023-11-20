@@ -224,6 +224,50 @@ namespace FrmPrincipal
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Archivos XML|*.xml";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    using (XmlTextReader lectorXml = new XmlTextReader(openFileDialog.FileName))
+                    {
+                        XmlSerializer serializador = new XmlSerializer(typeof(Sindicato));
+                        this.sindicato = (Sindicato)serializador.Deserialize(lectorXml);
+                    }
+                    this.ActualizarVisor();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar el archivo XML: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Archivos XML|*.xml";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (XmlTextWriter escritorXml = new XmlTextWriter(saveFileDialog.FileName, Encoding.UTF8))
+                {
+                    XmlSerializer serializador = new XmlSerializer(typeof(Sindicato));
+                    serializador.Serialize(escritorXml, this.sindicato);
+                }
+            }
+        }
+
+        private void btnSesiones_Click(object sender, EventArgs e)
+        {
+            FrmRegistro frmRegistro = new FrmRegistro();
+            frmRegistro.ShowDialog();
+        }
+
+        private void btn_cargarBd_Click(object sender, EventArgs e)
+        {
             try
             {
                 AccesoDatos accesoDatos = new AccesoDatos();
@@ -258,28 +302,6 @@ namespace FrmPrincipal
             {
                 MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-        }
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Archivos XML|*.xml";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                using (XmlTextWriter escritorXml = new XmlTextWriter(saveFileDialog.FileName, Encoding.UTF8))
-                {
-                    XmlSerializer serializador = new XmlSerializer(typeof(Sindicato));
-                    serializador.Serialize(escritorXml, this.sindicato);
-                }
-            }
-        }
-
-        private void btnSesiones_Click(object sender, EventArgs e)
-        {
-            FrmRegistro frmRegistro = new FrmRegistro();
-            frmRegistro.ShowDialog();
         }
     }
 }
