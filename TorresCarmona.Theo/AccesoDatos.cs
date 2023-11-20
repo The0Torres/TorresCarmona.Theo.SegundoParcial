@@ -301,7 +301,10 @@ namespace Laburos
 
                 int filasAfectadas = this.comando.ExecuteNonQuery();
 
-                return filasAfectadas == 1;
+                if (filasAfectadas == 1)
+                {
+                    retorno = true;
+                }
             }
             catch (Exception ex)
             {
@@ -343,7 +346,10 @@ namespace Laburos
 
                 int filasAfectadas = this.comando.ExecuteNonQuery();
 
-                return filasAfectadas == 1;
+                if (filasAfectadas == 1)
+                {
+                    retorno = true;
+                }
             }
             catch (Exception ex)
             {
@@ -385,7 +391,10 @@ namespace Laburos
 
                 int filasAfectadas = this.comando.ExecuteNonQuery();
 
-                return filasAfectadas == 1;
+                if (filasAfectadas == 1)
+                {
+                    retorno = true;
+                }
             }
             catch (Exception ex)
             {

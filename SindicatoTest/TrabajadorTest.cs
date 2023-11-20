@@ -11,7 +11,7 @@ namespace SindicatoTest
         {
             // Arrange
             Sindicato sindicato = new Sindicato();
-            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 1,"Deportes", 90, EMedios.Television);
+            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 1, "Deportes", 90, EMedios.Television);
 
             // Act
             sindicato += periodista;
@@ -54,18 +54,27 @@ namespace SindicatoTest
         }
 
         [TestMethod]
-        public void TestInsertarPeriodistaEnBaseDeDatos()
+        public void TestModificarDeportista()
         {
             // Arrange
             AccesoDatos accesoDatos = new AccesoDatos();
-            Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 4, "Deportes", 90, EMedios.Television);
+            Deportista deportista = new Deportista
+            {
+                Nombre = "NuevoNombre",
+                Apellido = "NuevoApellido",
+                Salario = 60000,
+                Tipo = ETipo.Tiempocompleto,
+                Id = 1, 
+                Deporte = "NuevoDeporte",
+                Trofeos = 10,
+                RankingMundial = 5
+            };
 
             // Act
-            bool resultado = accesoDatos.InsertarPeriodista(periodista);
+            bool resultado = accesoDatos.ModificarDeportista(deportista);
 
             // Assert
             Assert.IsTrue(resultado);
-
         }
     }
 }
