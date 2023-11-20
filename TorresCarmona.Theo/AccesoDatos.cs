@@ -8,18 +8,16 @@ namespace Laburos
     {
         private SqlConnection conexion;
         private static string cadenaConexion;
-
+        private SqlDataReader lector;
         public SqlCommand comando;
 
         static AccesoDatos()
         {
-
             cadenaConexion = TorresCarmona.Theo.Properties.Resources.miConexion;
         }
 
         public AccesoDatos()
         {
-
             this.conexion = new SqlConnection(cadenaConexion);
         }
 
@@ -187,7 +185,7 @@ namespace Laburos
             }
             catch (Exception ex)
             {
-                // Manejar la excepción, si es necesario
+
             }
             finally
             {
@@ -335,7 +333,50 @@ namespace Laburos
 
             return retorno;
         }
+
+        public List<Periodista> ObtenerListaPeriodistas()
+        {
+            List<Periodista> lista = new List<Periodista>();
+            try
+            {
+                this.comando = new SqlCommand();
+                this.comando.CommandType = System.Data.CommandType.Text;
+                this.comando.CommandText = "SELECT nombre, apellido, salario, tipo, id, especializacion, credibilidad, medio FROM Periodista";
+                this.comando.Connection = this.conexion;
+
+                this.conexion.Open();
+
+                this.lector = this.comando.ExecuteReader();
+                while (lector.Read())
+                {
+                    Periodista periodista = new Periodista();
+                    periodista.Nombre = this.lector["nombre"].ToString();
+                    periodista.Apellido = this.lector["apellido"].ToString();
+                    periodista.Salario = (double)this.lector["salario"];
+                    periodista.Tipo = (ETipo)Enum.Parse(typeof(ETipo), this.lector["tipo"].ToString());
+                    periodista.Id = (double)this.lector["id"];
+                    periodista.Especializacion = this.lector["especializacion"].ToString();
+                    periodista.Credibilidad = (double)this.lector["credibilidad"];
+                    periodista.Medio = (EMedios)Enum.Parse(typeof(EMedios), this.lector["medio"].ToString());
+                    lista.Add(periodista);
+                }
+
+                this.lector.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                if (this.conexion.State == System.Data.ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+            return lista;
+        }
+
+
     }
-
-
 }

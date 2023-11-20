@@ -176,9 +176,9 @@ namespace FrmPrincipal
                     this.ActualizarVisor();
                 }
 
-                
+
             }
-        }      
+        }
 
         private void btnOrdenar_Click(object sender, EventArgs e)
         {
@@ -224,25 +224,30 @@ namespace FrmPrincipal
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Archivos XML|*.xml";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                try
+                AccesoDatos accesoDatos = new AccesoDatos();
+                List<Periodista> listaPeriodistasCargados = accesoDatos.ObtenerListaPeriodistas();
+
+                if (listaPeriodistasCargados.Count > 0)
                 {
-                    using (XmlTextReader lectorXml = new XmlTextReader(openFileDialog.FileName))
+                    foreach (Periodista periodista in listaPeriodistasCargados)
                     {
-                        XmlSerializer serializador = new XmlSerializer(typeof(Sindicato));
-                        this.sindicato = (Sindicato)serializador.Deserialize(lectorXml);
+                        Sindicato += periodista;
                     }
-                    this.ActualizarVisor();
+
+                    ActualizarVisor();
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Error al cargar el archivo XML: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se encontraron datos válidos.", "Datos Vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

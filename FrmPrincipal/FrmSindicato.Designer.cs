@@ -46,7 +46,7 @@
             lstSindicato.ItemHeight = 15;
             lstSindicato.Location = new Point(38, 28);
             lstSindicato.Name = "lstSindicato";
-            lstSindicato.Size = new Size(705, 334);
+            lstSindicato.Size = new Size(872, 334);
             lstSindicato.TabIndex = 0;
             // 
             // label1
@@ -77,7 +77,7 @@
             btnModificar.BackColor = SystemColors.ButtonFace;
             btnModificar.FlatStyle = FlatStyle.Popup;
             btnModificar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnModificar.Location = new Point(258, 391);
+            btnModificar.Location = new Point(332, 391);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(128, 46);
             btnModificar.TabIndex = 3;
@@ -90,7 +90,7 @@
             btnEliminar.BackColor = SystemColors.ButtonFace;
             btnEliminar.FlatStyle = FlatStyle.Popup;
             btnEliminar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnEliminar.Location = new Point(479, 391);
+            btnEliminar.Location = new Point(589, 391);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(115, 46);
             btnEliminar.TabIndex = 4;
@@ -104,7 +104,7 @@
             btnOrdenar.FlatStyle = FlatStyle.Popup;
             btnOrdenar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnOrdenar.ForeColor = SystemColors.ControlLightLight;
-            btnOrdenar.Location = new Point(479, 452);
+            btnOrdenar.Location = new Point(589, 453);
             btnOrdenar.Name = "btnOrdenar";
             btnOrdenar.Size = new Size(115, 41);
             btnOrdenar.TabIndex = 5;
@@ -142,7 +142,7 @@
             btnGuardar.FlatStyle = FlatStyle.Popup;
             btnGuardar.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnGuardar.ForeColor = SystemColors.ButtonFace;
-            btnGuardar.Location = new Point(258, 453);
+            btnGuardar.Location = new Point(332, 452);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(128, 41);
             btnGuardar.TabIndex = 8;
@@ -155,7 +155,7 @@
             btnSesiones.BackColor = SystemColors.ButtonFace;
             btnSesiones.FlatStyle = FlatStyle.Popup;
             btnSesiones.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSesiones.Location = new Point(661, 401);
+            btnSesiones.Location = new Point(828, 407);
             btnSesiones.Name = "btnSesiones";
             btnSesiones.Size = new Size(82, 75);
             btnSesiones.TabIndex = 9;
@@ -168,7 +168,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
-            ClientSize = new Size(812, 516);
+            ClientSize = new Size(940, 516);
             Controls.Add(btnSesiones);
             Controls.Add(btnGuardar);
             Controls.Add(btnCargar);
