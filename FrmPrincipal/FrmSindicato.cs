@@ -228,12 +228,32 @@ namespace FrmPrincipal
             {
                 AccesoDatos accesoDatos = new AccesoDatos();
                 List<Periodista> listaPeriodistasCargados = accesoDatos.ObtenerListaPeriodistas();
+                List<Deportista> listaDeportistasCargados = accesoDatos.ObtenerListaDeportistas();
+                List<Cirujano> listaCirujanosCargados = accesoDatos.ObtenerListaCirujanos();
 
                 if (listaPeriodistasCargados.Count > 0)
                 {
                     foreach (Periodista periodista in listaPeriodistasCargados)
                     {
                         Sindicato += periodista;
+                    }
+
+                    ActualizarVisor();
+                }
+                if (listaDeportistasCargados.Count > 0)
+                {
+                    foreach (Deportista deportista in listaDeportistasCargados)
+                    {
+                        Sindicato += deportista;
+                    }
+
+                    ActualizarVisor();
+                }
+                if (listaCirujanosCargados.Count > 0)
+                {
+                    foreach (Cirujano cirujano in listaCirujanosCargados)
+                    {
+                        Sindicato += cirujano;
                     }
 
                     ActualizarVisor();

@@ -132,7 +132,7 @@
             btnCargar.Name = "btnCargar";
             btnCargar.Size = new Size(124, 41);
             btnCargar.TabIndex = 7;
-            btnCargar.Text = "Cargar\r\nArchivo\r\n";
+            btnCargar.Text = "Cargar\r\n Base de Datos";
             btnCargar.UseVisualStyleBackColor = false;
             btnCargar.Click += btnCargar_Click;
             // 
@@ -146,7 +146,7 @@
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(128, 41);
             btnGuardar.TabIndex = 8;
-            btnGuardar.Text = "Guardar\r\nArchivo\r\n";
+            btnGuardar.Text = "Guardar\r\n en XML";
             btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
             // 

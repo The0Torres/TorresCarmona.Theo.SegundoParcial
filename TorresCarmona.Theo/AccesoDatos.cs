@@ -377,6 +377,90 @@ namespace Laburos
             return lista;
         }
 
+        public List<Cirujano> ObtenerListaCirujanos()
+        {
+            List<Cirujano> lista = new List<Cirujano>();
+            try
+            {
+                this.comando = new SqlCommand();
+                this.comando.CommandType = System.Data.CommandType.Text;
+                this.comando.CommandText = "SELECT nombre, apellido, salario, tipo, id, especialidad, cirugias, hospital FROM Cirujano";
+                this.comando.Connection = this.conexion;
 
+                this.conexion.Open();
+
+                this.lector = this.comando.ExecuteReader();
+                while (lector.Read())
+                {
+                    Cirujano cirujano = new Cirujano();
+                    cirujano.Nombre = this.lector["nombre"].ToString();
+                    cirujano.Apellido = this.lector["apellido"].ToString();
+                    cirujano.Salario = (double)this.lector["salario"];
+                    cirujano.Tipo = (ETipo)Enum.Parse(typeof(ETipo), this.lector["tipo"].ToString());
+                    cirujano.Id = (double)this.lector["id"];
+                    cirujano.Especialidad = this.lector["especialidad"].ToString();
+                    cirujano.Cirugias = (double)this.lector["cirugias"];
+                    cirujano.Hospital = (EHospitales)Enum.Parse(typeof(EHospitales), this.lector["hospital"].ToString());
+                    lista.Add(cirujano);
+                }
+
+                this.lector.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                if (this.conexion.State == System.Data.ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+            return lista;
+        }
+
+        public List<Deportista> ObtenerListaDeportistas()
+        {
+            List<Deportista> lista = new List<Deportista>();
+            try
+            {
+                this.comando = new SqlCommand();
+                this.comando.CommandType = System.Data.CommandType.Text;
+                this.comando.CommandText = "SELECT nombre, apellido, salario, tipo, id, deporte, trofeos, rankingMundial FROM Deportista";
+                this.comando.Connection = this.conexion;
+
+                this.conexion.Open();
+
+                this.lector = this.comando.ExecuteReader();
+                while (lector.Read())
+                {
+                    Deportista deportista = new Deportista();
+                    deportista.Nombre = this.lector["nombre"].ToString();
+                    deportista.Apellido = this.lector["apellido"].ToString();
+                    deportista.Salario = (double)this.lector["salario"];
+                    deportista.Tipo = (ETipo)Enum.Parse(typeof(ETipo), this.lector["tipo"].ToString());
+                    deportista.Id = (double)this.lector["id"];
+                    deportista.Deporte = this.lector["deporte"].ToString();
+                    deportista.Trofeos = (double)this.lector["trofeos"];
+                    deportista.RankingMundial = (double)this.lector["rankingMundial"];
+                    lista.Add(deportista);
+                }
+
+                this.lector.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                if (this.conexion.State == System.Data.ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+            return lista;
+        }
     }
 }
