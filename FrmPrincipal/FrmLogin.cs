@@ -18,6 +18,8 @@ namespace FrmPrincipal
         private Usuario usuario;
         private bool cerrarAplicacion = true;
 
+        private delegate void ActualizarInterfazDeUsuarioDelegate(Usuario usuario);
+
         public Usuario UsuarioDelForm
         {
             get { return this.usuario; }
@@ -36,19 +38,32 @@ namespace FrmPrincipal
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Usuario usuarioVerificado = this.Verificar();
-
-            if (usuarioVerificado == null)
+            Task.Run(() =>
             {
-                MessageBox.Show("Datos inválidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Usuario usuarioVerificado = this.Verificar();
+                ActualizarInterfazDeUsuario(usuarioVerificado);
+            });
+        }
+
+        private void ActualizarInterfazDeUsuario(Usuario usuario)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(new ActualizarInterfazDeUsuarioDelegate(ActualizarInterfazDeUsuario), usuario);
             }
             else
             {
-                this.usuario = this.Verificar();
-                this.DialogResult = DialogResult.OK;
-                cerrarAplicacion = false;
+                if (usuario == null)
+                {
+                    MessageBox.Show("Datos inválidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    this.usuario = usuario;
+                    this.DialogResult = DialogResult.OK;
+                    cerrarAplicacion = false;
+                }
             }
-            
         }
 
         private Usuario Verificar()
@@ -63,7 +78,6 @@ namespace FrmPrincipal
                 string json_str = sr.ReadToEnd();
 
                 List<Usuario> users = JsonSerializer.Deserialize<List<Usuario>>(json_str, opciones);
-
 
                 foreach (Usuario item in users)
                 {
