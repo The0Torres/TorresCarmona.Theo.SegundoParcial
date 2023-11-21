@@ -1,63 +1,93 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="Laburos.Trabajador">
-    <Position X="9.5" Y="0.5" Width="4.75" />
+    <Position X="11.25" Y="0.5" Width="4.75" />
     <TypeIdentifier>
-      <HashCode>QAAABEAAAAYAAACEgAAAhAAAAAAAAAAAAAAAAAAAAiQ=</HashCode>
+      <HashCode>QAACBEAAAAYAAACEgAAAhAAAAAAAAAAAAAAAAAAAAiQ=</HashCode>
       <FileName>Trabajador.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Laburos.Periodista">
-    <Position X="10.25" Y="8.5" Width="8" />
+    <Position X="10.25" Y="9.75" Width="8.75" />
     <TypeIdentifier>
       <HashCode>AAQAAAAEAAIAABAAgEAQAABAAAAAAAAAAAAAAAAAAiA=</HashCode>
       <FileName>Periodista.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Laburos.Sindicato">
-    <Position X="15" Y="0.5" Width="4.5" />
+    <Position X="16.75" Y="0.5" Width="4.5" />
     <TypeIdentifier>
       <HashCode>AAAQAABAAAAAAAAAQAEAAIAAAAAAAAAAECAIBAAACiA=</HashCode>
       <FileName>Sindicato.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Laburos.Cirujano">
-    <Position X="20.75" Y="7.25" Width="7.75" />
+    <Position X="19.75" Y="9.75" Width="8.75" />
+    <InheritanceLine Type="Laburos.Trabajador" ManuallyRouted="true">
+      <Path>
+        <Point X="13.625" Y="5.968" />
+        <Point X="13.625" Y="9.065" />
+        <Point X="24.125" Y="9.065" />
+        <Point X="24.125" Y="9.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>gAUAAAAEAAIAAAAAgAAAAAAAAAAAAAAAAAAAAIABAiA=</HashCode>
       <FileName>Cirujano.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Laburos.Deportista">
-    <Position X="0.5" Y="6.75" Width="7.75" />
+    <Position X="0.5" Y="9.75" Width="8.75" />
     <TypeIdentifier>
       <HashCode>BAAAEAQAABIAAAAAoAAAACAAAAAAAAAAAAAAAAAAAiA=</HashCode>
       <FileName>Deportista.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Laburos.Usuario">
-    <Position X="19.75" Y="0.5" Width="2.5" />
+    <Position X="0.5" Y="2.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQBAACEAAAAAAAAAAQAAACAAAAQAAAAAAA=</HashCode>
       <FileName>Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Laburos.AccesoDatos">
+    <Position X="4.5" Y="4" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AEiAEEACAAAAAAABVAAABgAAAAACAAAAAAAAAAAgAAE=</HashCode>
+      <FileName>AccesoDatos.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Laburos.DatosInvalidosException">
+    <Position X="0.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DatosInvalidos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Laburos.IAccesoDatos">
+    <Position X="4.5" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AEgAAEACAAAAAAAAVAAABgAAAAACAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>IAccesoDatos.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Enum Name="ETipo">
-    <Position X="12.75" Y="0.5" Width="1.5" />
+    <Position X="14.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>TipoTrabajador.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="EMedios">
-    <Position X="16.75" Y="8.5" Width="1.5" />
+    <Position X="17.5" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAQAAAAAAAAAAABAAAAACAAAAAAAAAAAIA=</HashCode>
       <FileName>Medios.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="EHospitales">
-    <Position X="27" Y="7.25" Width="1.5" />
+    <Position X="27" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAABAAAAAAAAAAIAAAAABAAAAAA=</HashCode>
       <FileName>Hospitales.cs</FileName>

@@ -13,6 +13,7 @@ namespace FrmPrincipal
 {
     public partial class FrmOrdenamiento : Form
     {
+        public event EventHandler OrdenamientoCompletado;
 
         private Sindicato sindicato;
 
@@ -22,65 +23,70 @@ namespace FrmPrincipal
             set { sindicato = value; }
         }
 
-
         public FrmOrdenamiento(Sindicato sindicato)
         {
             InitializeComponent();
             this.sindicato = sindicato;
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private async void btnAceptar_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            if(rbtnSalario.Checked) 
+            if (rbtnSalario.Checked)
             {
-               if (rbtnAscendente.Checked) 
-               {
-                    Sindicato.OrdenarPorSalarioAscendente();
-               }
-               else if(rbtnDescendente.Checked)
-               {
-                    Sindicato.OrdenarPorSalarioDescendente();              
-               }
-            }
-            else if(rbtnApellido.Checked)
-            {
-                 if(rbtnAscendente.Checked)
+                if (rbtnAscendente.Checked)
                 {
-                    Sindicato.OrdenarPorApellidoAscendente();
-                }
-                else if(rbtnDescendente.Checked)
-                {
-                    Sindicato.OrdenarPorApellidoDescendente();
-                }
-            }
-            else if(rbtnNombre.Checked)
-            {
-                if(rbtnAscendente.Checked)
-                {
-                    Sindicato.OrdenarPorNombreAscendente();
+                    await Task.Run(() => Sindicato.OrdenarPorSalarioAscendente());
                 }
                 else if (rbtnDescendente.Checked)
                 {
-                    Sindicato.OrdenarPorNombreDescendente();
+                    await Task.Run(() => Sindicato.OrdenarPorSalarioDescendente());
                 }
             }
+            else if (rbtnApellido.Checked)
+            {
+                if (rbtnAscendente.Checked)
+                {
+                    await Task.Run(() => Sindicato.OrdenarPorApellidoAscendente());
+                }
+                else if (rbtnDescendente.Checked)
+                {
+                    await Task.Run(() => Sindicato.OrdenarPorApellidoDescendente());
+                }
+            }
+            else if (rbtnNombre.Checked)
+            {
+                if (rbtnAscendente.Checked)
+                {
+                    await Task.Run(() => Sindicato.OrdenarPorNombreAscendente());
+                }
+                else if (rbtnDescendente.Checked)
+                {
+                    await Task.Run(() => Sindicato.OrdenarPorNombreDescendente());
+                }
+            }
+
             if (!rbtnAscendente.Checked && !rbtnDescendente.Checked)
             {
                 MessageBox.Show("Por favor seleccione el orden",
-                                        "Advertencia",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Warning
-                                        );
+                                "Advertencia",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
             }
             else
             {
-                this.DialogResult = DialogResult.OK; 
+                OnOrdenamientoCompletado(EventArgs.Empty);
+                this.DialogResult = DialogResult.OK;
             }
+        }
+
+        protected virtual void OnOrdenamientoCompletado(EventArgs e)
+        {
+            OrdenamientoCompletado?.Invoke(this, e);
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

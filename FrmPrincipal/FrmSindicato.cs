@@ -183,12 +183,17 @@ namespace FrmPrincipal
         private void btnOrdenar_Click(object sender, EventArgs e)
         {
             FrmOrdenamiento ordenamiento = new FrmOrdenamiento(sindicato);
-            DialogResult resultado = ordenamiento.ShowDialog();
-            if (resultado == DialogResult.OK)
-            {
-                this.ActualizarVisor();
-            }
+            ordenamiento.OrdenamientoCompletado += OrdenamientoCompletadoHandler; 
+            ordenamiento.ShowDialog();
+
         }
+
+        private void OrdenamientoCompletadoHandler(object? sender, EventArgs e)
+        {
+            ActualizarVisor();
+        }
+
+
 
         private void FrmSindicato_Load(object sender, EventArgs e)
         {
@@ -222,7 +227,7 @@ namespace FrmPrincipal
             }
         }
 
-        private void btnCargar_Click(object sender, EventArgs e)
+        private async void btnCargar_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Archivos XML|*.xml";
@@ -231,11 +236,15 @@ namespace FrmPrincipal
             {
                 try
                 {
-                    using (XmlTextReader lectorXml = new XmlTextReader(openFileDialog.FileName))
+                    await Task.Run(() =>
                     {
-                        XmlSerializer serializador = new XmlSerializer(typeof(Sindicato));
-                        this.sindicato = (Sindicato)serializador.Deserialize(lectorXml);
-                    }
+                        using (XmlTextReader lectorXml = new XmlTextReader(openFileDialog.FileName))
+                        {
+                            XmlSerializer serializador = new XmlSerializer(typeof(Sindicato));
+                            this.sindicato = (Sindicato)serializador.Deserialize(lectorXml);
+                        }
+                    });
+
                     this.ActualizarVisor();
                 }
                 catch (Exception ex)
@@ -244,6 +253,7 @@ namespace FrmPrincipal
                 }
             }
         }
+
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
