@@ -95,7 +95,7 @@ namespace FrmPrincipal
 
                     cirujano = new Cirujano(nombre, apellido, salario, tipo, id, especialidad, hospital, cirugias);
 
-                    accesoDatos.InsertarCirujano(cirujano);
+                    accesoDatos.InsertarTrabajador(cirujano, "Cirujano");
 
                     DialogResult = DialogResult.OK;
                 }

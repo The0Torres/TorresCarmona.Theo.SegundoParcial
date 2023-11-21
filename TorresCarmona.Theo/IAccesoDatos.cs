@@ -8,9 +8,7 @@ namespace Laburos
 {
     public interface IAccesoDatos
     {
-        bool InsertarPeriodista(Periodista periodista);
-        bool InsertarCirujano(Cirujano cirujano);
-        bool InsertarDeportista(Deportista deportista);
+        bool InsertarTrabajador<T>(T trabajador, string nombreTabla) where T : Trabajador;
         bool EliminarRegistro<T>(T entidad) where T : class;
         bool ModificarPeriodista(Periodista periodista);
         bool ModificarCirujano(Cirujano cirujano);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using Microsoft.Data.SqlClient;
 
 namespace Laburos
@@ -21,27 +22,52 @@ namespace Laburos
             this.conexion = new SqlConnection(cadenaConexion);
         }
 
-        public bool InsertarPeriodista(Periodista periodista)
+        public bool InsertarTrabajador<T>(T trabajador, string nombreTabla) where T : Trabajador
         {
             bool retorno = false;
 
             try
             {
-                
                 this.comando = new SqlCommand();
                 this.comando.Parameters.Clear();
-                this.comando.Parameters.AddWithValue("@nombre", periodista.Nombre);
-                this.comando.Parameters.AddWithValue("@apellido", periodista.Apellido);
-                this.comando.Parameters.AddWithValue("@salario", (double)periodista.Salario);
-                this.comando.Parameters.AddWithValue("@tipo", (int)periodista.Tipo);
-                this.comando.Parameters.AddWithValue("@id", (int)periodista.Id);
-                this.comando.Parameters.AddWithValue("@especializacion", periodista.Especializacion);
-                this.comando.Parameters.AddWithValue("@credibilidad", (double)periodista.Credibilidad);
-                this.comando.Parameters.AddWithValue("@medio", (int)periodista.Medio);
+                this.comando.Parameters.AddWithValue("@nombre", trabajador.Nombre);
+                this.comando.Parameters.AddWithValue("@apellido", trabajador.Apellido);
+                this.comando.Parameters.AddWithValue("@salario", (double)trabajador.Salario);
+                this.comando.Parameters.AddWithValue("@tipo", (int)trabajador.Tipo);
+                this.comando.Parameters.AddWithValue("@id", (int)trabajador.Id);
 
-                this.comando.CommandType = System.Data.CommandType.Text;
-                this.comando.CommandText = "INSERT INTO Periodista (nombre, apellido, salario, tipo, id, especializacion, credibilidad, medio)" +
-                    "VALUES (@nombre, @apellido, @salario, @tipo, @id, @especializacion, @credibilidad, @medio)";
+                if (trabajador is Periodista periodista)
+                {
+                    comando.CommandText = $"INSERT INTO {nombreTabla} " +
+                        "(nombre, apellido, salario, tipo, id, especializacion, credibilidad, medio) " +
+                        "VALUES (@nombre, @apellido, @salario, @tipo, @id, @especializacion, @credibilidad, @medio)";
+
+                    comando.Parameters.AddWithValue("@especializacion", periodista.Especializacion);
+                    comando.Parameters.AddWithValue("@credibilidad", (double)periodista.Credibilidad);
+                    comando.Parameters.AddWithValue("@medio", (int)periodista.Medio);
+                }
+                else if (trabajador is Cirujano cirujano)
+                {
+                    comando.CommandText = $"INSERT INTO {nombreTabla} " +
+                        "(nombre, apellido, salario, tipo, id, especialidad, hospital, cirugias) " +
+                        "VALUES (@nombre, @apellido, @salario, @tipo, @id, @especialidad, @hospital, @cirugias)";
+
+                    comando.Parameters.AddWithValue("@especialidad", cirujano.Especialidad);
+                    comando.Parameters.AddWithValue("@hospital", (int)cirujano.Hospital);
+                    comando.Parameters.AddWithValue("@cirugias", cirujano.Cirugias);
+                }
+                else if (trabajador is Deportista deportista)
+                {
+                    comando.CommandText = $"INSERT INTO {nombreTabla} " +
+                        "(nombre, apellido, salario, tipo, id, deporte, trofeos, rankingMundial) " +
+                        "VALUES (@nombre, @apellido, @salario, @tipo, @id, @deporte, @trofeos, @rankingMundial)";
+
+                    comando.Parameters.AddWithValue("@deporte", deportista.Deporte);
+                    comando.Parameters.AddWithValue("@trofeos", deportista.Trofeos);
+                    comando.Parameters.AddWithValue("@rankingMundial", deportista.RankingMundial);
+                }
+
+
                 this.comando.Connection = this.conexion;
 
                 this.conexion.Open();
@@ -55,91 +81,7 @@ namespace Laburos
             }
             finally
             {
-                if (this.conexion.State == System.Data.ConnectionState.Open)
-                {
-                    this.conexion.Close();
-                }
-            }
-
-            return retorno;
-        }
-
-        public bool InsertarCirujano(Cirujano cirujano)
-        {
-            bool retorno = false;
-
-            try
-            {
-                this.comando = new SqlCommand();
-                this.comando.Parameters.Clear();
-                this.comando.Parameters.AddWithValue("@nombre", cirujano.Nombre);
-                this.comando.Parameters.AddWithValue("@apellido", cirujano.Apellido);
-                this.comando.Parameters.AddWithValue("@salario", (double)cirujano.Salario);
-                this.comando.Parameters.AddWithValue("@tipo", (int)cirujano.Tipo);
-                this.comando.Parameters.AddWithValue("@id", (int)cirujano.Id);
-                this.comando.Parameters.AddWithValue("@especialidad", cirujano.Especialidad);
-                this.comando.Parameters.AddWithValue("@hospital", (int)cirujano.Hospital);
-                this.comando.Parameters.AddWithValue("@cirugias", cirujano.Cirugias);
-
-                this.comando.CommandType = System.Data.CommandType.Text;
-                this.comando.CommandText = "INSERT INTO Cirujano (nombre, apellido, salario, tipo, id, especialidad, hospital, cirugias)" +
-                    "VALUES (@nombre, @apellido, @salario, @tipo, @id, @especialidad, @hospital, @cirugias)";
-                this.comando.Connection = this.conexion;
-
-                this.conexion.Open();
-
-                int filasAfectadas = this.comando.ExecuteNonQuery();
-
-                if (filasAfectadas == 1)
-                {
-                    retorno = true;
-                }
-            }
-            finally
-            {
-                if (this.conexion.State == System.Data.ConnectionState.Open)
-                {
-                    this.conexion.Close();
-                }
-            }
-
-            return retorno;
-        }
-
-        public bool InsertarDeportista(Deportista deportista)
-        {
-            bool retorno = false;
-
-            try
-            {
-                this.comando = new SqlCommand();
-                this.comando.Parameters.Clear();
-                this.comando.Parameters.AddWithValue("@nombre", deportista.Nombre);
-                this.comando.Parameters.AddWithValue("@apellido", deportista.Apellido);
-                this.comando.Parameters.AddWithValue("@salario", (double)deportista.Salario);
-                this.comando.Parameters.AddWithValue("@tipo", (int)deportista.Tipo);
-                this.comando.Parameters.AddWithValue("@id", (int)deportista.Id);
-                this.comando.Parameters.AddWithValue("@deporte", deportista.Deporte);
-                this.comando.Parameters.AddWithValue("@trofeos", deportista.Trofeos);
-                this.comando.Parameters.AddWithValue("@rankingMundial", deportista.RankingMundial);
-
-                this.comando.CommandType = System.Data.CommandType.Text;
-                this.comando.CommandText = "INSERT INTO Deportista (nombre, apellido, salario, tipo, id, deporte, trofeos, rankingMundial)" +
-                    "VALUES (@nombre, @apellido, @salario, @tipo, @id, @deporte, @trofeos, @rankingMundial)";
-                this.comando.Connection = this.conexion;
-
-                this.conexion.Open();
-
-                int filasAfectadas = this.comando.ExecuteNonQuery();
-
-                if (filasAfectadas == 1)
-                {
-                    retorno = true;
-                }
-            }
-            finally
-            {
-                if (this.conexion.State == System.Data.ConnectionState.Open)
+                if (this.conexion.State == ConnectionState.Open)
                 {
                     this.conexion.Close();
                 }
@@ -170,6 +112,10 @@ namespace Laburos
                 {
                     retorno = true;
                 }
+            }
+            catch(Exception ex) 
+            {
+
             }
             finally
             {

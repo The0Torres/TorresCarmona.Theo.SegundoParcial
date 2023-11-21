@@ -100,7 +100,7 @@ namespace FrmPrincipal
 
                     periodista = new Periodista(nombre, apellido, salario, tipo, id, especializacion, credibilidad, medio);
 
-                    accesoDatos.InsertarPeriodista(periodista);
+                    accesoDatos.InsertarTrabajador(periodista, "Periodista");
 
                     DialogResult = DialogResult.OK;
                 }

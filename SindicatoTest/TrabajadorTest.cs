@@ -14,7 +14,7 @@ namespace SindicatoTest
             Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 1, "Deportes", 90, EMedios.Television);
 
             // Act
-            bool resultado = accesoDatos.InsertarPeriodista(periodista);
+            bool resultado = accesoDatos.InsertarTrabajador(periodista,"Periodista");
 
             // Assert
             Assert.IsTrue(resultado);
@@ -51,7 +51,6 @@ namespace SindicatoTest
             // Arrange
             AccesoDatos accesoDatos = new AccesoDatos();
             Periodista periodista = new Periodista("Nombre", "Apellido", 25, ETipo.Tiempocompleto, 1, "Deportes", 90, EMedios.Television);
-            accesoDatos.InsertarPeriodista(periodista);
 
             // Act
             bool resultado = accesoDatos.EliminarRegistro(periodista);

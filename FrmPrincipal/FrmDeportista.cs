@@ -90,7 +90,7 @@ namespace FrmPrincipal
 
                     deportista = new Deportista(nombre, apellido, salario, tipo, id, deporte, trofeos, ranking);
 
-                    accesoDatos.InsertarDeportista(deportista);
+                    accesoDatos.InsertarTrabajador(deportista, "Deportista");
 
                     DialogResult = DialogResult.OK;
                 }

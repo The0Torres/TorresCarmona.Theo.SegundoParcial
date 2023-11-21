@@ -111,7 +111,6 @@ namespace FrmPrincipal
                         accesoDatos.ModificarDeportista(frmdeportista.Deportista);
                     }
                 }
-
                 this.ActualizarVisor();
             }
 
@@ -134,7 +133,6 @@ namespace FrmPrincipal
                     Sindicato += nuevoTrabajador;
                     this.ActualizarVisor();
                 }
-
             }
         }
 
@@ -175,8 +173,6 @@ namespace FrmPrincipal
                     Sindicato -= trabajador;
                     this.ActualizarVisor();
                 }
-
-
             }
         }
 
@@ -185,15 +181,12 @@ namespace FrmPrincipal
             FrmOrdenamiento ordenamiento = new FrmOrdenamiento(sindicato);
             ordenamiento.OrdenamientoCompletado += OrdenamientoCompletadoHandler; 
             ordenamiento.ShowDialog();
-
         }
 
         private void OrdenamientoCompletadoHandler(object? sender, EventArgs e)
         {
             ActualizarVisor();
         }
-
-
 
         private void FrmSindicato_Load(object sender, EventArgs e)
         {
