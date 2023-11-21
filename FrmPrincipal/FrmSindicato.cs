@@ -272,14 +272,9 @@ namespace FrmPrincipal
             {
                 AccesoDatos accesoDatos = new AccesoDatos();
 
-                List<Periodista> listaPeriodistasCargados = new List<Periodista>();
-                accesoDatos.CargarLista(listaPeriodistasCargados, "SELECT nombre, apellido, salario, tipo, id, especializacion, credibilidad, medio FROM Periodista");
-
-                List<Cirujano> listaCirujanosCargados = new List<Cirujano>();
-                accesoDatos.CargarLista(listaCirujanosCargados, "SELECT nombre, apellido, salario, tipo, id, especialidad, cirugias, hospital FROM Cirujano");
-
-                List<Deportista> listaDeportistasCargados = new List<Deportista>();
-                accesoDatos.CargarLista(listaDeportistasCargados, "SELECT nombre, apellido, salario, tipo, id, deporte, trofeos, rankingMundial FROM Deportista");
+                List<Periodista> listaPeriodistasCargados = accesoDatos.ObtenerListaPeriodistas();
+                List<Cirujano> listaCirujanosCargados = accesoDatos.ObtenerListaCirujanos();
+                List<Deportista> listaDeportistasCargados = accesoDatos.ObtenerListaDeportistas();
 
                 foreach (Periodista periodista in listaPeriodistasCargados)
                 {

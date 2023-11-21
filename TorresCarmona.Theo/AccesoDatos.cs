@@ -53,10 +53,6 @@ namespace Laburos
                     retorno = true;
                 }
             }
-            catch (Exception ex)
-            {
-
-            }
             finally
             {
                 if (this.conexion.State == System.Data.ConnectionState.Open)
@@ -98,10 +94,6 @@ namespace Laburos
                 {
                     retorno = true;
                 }
-            }
-            catch (Exception ex)
-            {
-
             }
             finally
             {
@@ -145,10 +137,6 @@ namespace Laburos
                     retorno = true;
                 }
             }
-            catch (Exception ex)
-            {
-      
-            }
             finally
             {
                 if (this.conexion.State == System.Data.ConnectionState.Open)
@@ -183,10 +171,6 @@ namespace Laburos
                     retorno = true;
                 }
             }
-            catch (Exception ex)
-            {
-
-            }
             finally
             {
                 if (this.conexion.State == System.Data.ConnectionState.Open)
@@ -197,7 +181,6 @@ namespace Laburos
 
             return retorno;
         }
-
 
         public bool ModificarPeriodista(Periodista periodista)
         {
@@ -228,10 +211,6 @@ namespace Laburos
                 {
                     retorno = true;
                 }
-            }
-            catch (Exception ex)
-            {
-
             }
             finally
             {
@@ -274,10 +253,6 @@ namespace Laburos
                     retorno = true;
                 }
             }
-            catch (Exception ex)
-            {
-
-            }
             finally
             {
                 if (this.conexion.State == System.Data.ConnectionState.Open)
@@ -318,10 +293,6 @@ namespace Laburos
                 {
                     retorno = true;
                 }
-            }
-            catch (Exception ex)
-            {
-  
             }
             finally
             {
@@ -366,10 +337,6 @@ namespace Laburos
                 }
 
                 this.lector.Close();
-            }
-            catch (Exception ex)
-            {
-                // Manejo de excepciones
             }
             finally
             {
