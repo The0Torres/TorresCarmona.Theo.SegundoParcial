@@ -10,9 +10,7 @@ namespace Laburos
     {
         bool InsertarTrabajador<T>(T trabajador, string nombreTabla) where T : Trabajador;
         bool EliminarRegistro<T>(T entidad) where T : class;
-        bool ModificarPeriodista(Periodista periodista);
-        bool ModificarCirujano(Cirujano cirujano);
-        bool ModificarDeportista(Deportista deportista);
+        bool ModificarTrabajador<T>(T trabajador) where T : Trabajador;
         void CargarLista<T>(List<T> lista, string consulta) where T : class, new();
         List<Periodista> ObtenerListaPeriodistas();
         List<Cirujano> ObtenerListaCirujanos();

@@ -39,7 +39,7 @@ namespace SindicatoTest
             };
 
             // Act
-            bool resultado = accesoDatos.ModificarPeriodista(periodista);
+            bool resultado = accesoDatos.ModificarTrabajador(periodista);
 
             // Assert
             Assert.IsTrue(resultado);

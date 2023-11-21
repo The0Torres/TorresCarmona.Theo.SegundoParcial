@@ -81,7 +81,7 @@ namespace FrmPrincipal
                         Sindicato.Trabajadores[indice] = frmperiodista.Periodista;
 
                         AccesoDatos accesoDatos = new AccesoDatos();
-                        accesoDatos.ModificarPeriodista(frmperiodista.Periodista);
+                        accesoDatos.ModificarTrabajador(frmperiodista.Periodista);
                     }
                 }
                 else if (trabajador is Cirujano)
@@ -94,7 +94,7 @@ namespace FrmPrincipal
                         Sindicato.Trabajadores[indice] = frmcirujano.Cirujano;
 
                         AccesoDatos accesoDatos = new AccesoDatos();
-                        accesoDatos.ModificarCirujano(frmcirujano.Cirujano);
+                        accesoDatos.ModificarTrabajador(frmcirujano.Cirujano);
                     }
                 }
                 else if (trabajador is Deportista)
@@ -108,7 +108,7 @@ namespace FrmPrincipal
 
                         // Modificar en la base de datos
                         AccesoDatos accesoDatos = new AccesoDatos();
-                        accesoDatos.ModificarDeportista(frmdeportista.Deportista);
+                        accesoDatos.ModificarTrabajador(frmdeportista.Deportista);
                     }
                 }
                 this.ActualizarVisor();
