@@ -19,6 +19,7 @@ namespace FrmPrincipal
         private Usuario usuario;
         private Sindicato sindicato;
         private CancellationTokenSource actualizarTiempoTokenSource = new CancellationTokenSource();
+        private CancellationTokenSource actualizarTrabajadoresTokenSource = new CancellationTokenSource();
 
         public Sindicato Sindicato
         {
@@ -48,7 +49,6 @@ namespace FrmPrincipal
                 btnEliminar.Hide();
             }
         }
-
 
         private void ActualizarVisor()
         {
@@ -189,52 +189,6 @@ namespace FrmPrincipal
             ActualizarVisor();
         }
 
-        private void FrmSindicato_Load(object sender, EventArgs e)
-        {
-            string datos = usuario.ToString();
-            string logFilePath = "usuarios.log";
-            string entrada = $"{fechaActual.ToString("yyyy-MM-dd HH:mm:ss")} - {datos}\n";
-
-            using (StreamWriter registro = new StreamWriter(logFilePath, true))
-            {
-                registro.Write(entrada);
-            }
-
-            ActualizarLabelAsync();
-        }
-
-        private async Task ActualizarLabelAsync()
-        {
-            while (!actualizarTiempoTokenSource.Token.IsCancellationRequested)
-            {
-                DateTime horaActual = DateTime.Now;
-                string labelText = $"Perfil: {usuario.perfil} - Nombre: {usuario.nombre} - Hora actual: {horaActual.ToString(@"hh:mm:ss")}";
-
-                lblUsuario.Invoke((MethodInvoker)(() => lblUsuario.Text = labelText));
-
-                await Task.Delay(1000);
-            }
-        }
-
-        private void FrmSindicato_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            actualizarTiempoTokenSource.Cancel();
-
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                DialogResult result = MessageBox.Show("¿Está seguro de cerrar la aplicación?", "Cerrar Aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
-
         private async void btnCargar_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -261,7 +215,6 @@ namespace FrmPrincipal
                 }
             }
         }
-
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -316,5 +269,65 @@ namespace FrmPrincipal
                 MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        private async void FrmSindicato_Load(object sender, EventArgs e)
+        {
+            string datos = usuario.ToString();
+            string logFilePath = "usuarios.log";
+            string entrada = $"{fechaActual.ToString("yyyy-MM-dd HH:mm:ss")} - {datos}\n";
+
+            using (StreamWriter registro = new StreamWriter(logFilePath, true))
+            {
+                registro.Write(entrada);
+            }
+
+            await Task.WhenAll(ActualizarLabelHora(), ActualizarLabelTrabajadores());
+        }
+
+        private async Task ActualizarLabelHora()
+        {
+            while (!actualizarTiempoTokenSource.Token.IsCancellationRequested)
+            {
+                DateTime horaActual = DateTime.Now;
+                
+                string textousuario = $"Perfil: {usuario.perfil} - Nombre: {usuario.nombre} - Hora actual: {horaActual.ToString(@"hh:mm:ss")}";
+
+                lblUsuario.Invoke((MethodInvoker)(() => lblUsuario.Text = textousuario));
+
+                await Task.Delay(1000);
+            }
+        }
+
+        private async Task ActualizarLabelTrabajadores()
+        {
+            while (!actualizarTrabajadoresTokenSource.Token.IsCancellationRequested)
+            {
+                int cantidadTrabajadores = sindicato.Trabajadores.Count;
+                string textoTrabajadores = $"Gente en el sindicato: {cantidadTrabajadores}";
+
+                lblTrabajadores.Invoke((MethodInvoker)(() => lblTrabajadores.Text = textoTrabajadores));
+
+                await Task.Delay(1000);
+            }
+        }
+
+        private void FrmSindicato_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult result = MessageBox.Show("¿Está seguro de cerrar la aplicación?", "Cerrar Aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
     }
 }

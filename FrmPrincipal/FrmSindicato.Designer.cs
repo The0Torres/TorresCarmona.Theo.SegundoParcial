@@ -39,6 +39,7 @@
             btnGuardar = new Button();
             btnSesiones = new Button();
             btn_cargarBd = new Button();
+            lblTrabajadores = new Label();
             SuspendLayout();
             // 
             // lstSindicato
@@ -47,7 +48,7 @@
             lstSindicato.ItemHeight = 15;
             lstSindicato.Location = new Point(38, 28);
             lstSindicato.Name = "lstSindicato";
-            lstSindicato.Size = new Size(905, 334);
+            lstSindicato.Size = new Size(874, 319);
             lstSindicato.TabIndex = 0;
             // 
             // label1
@@ -65,9 +66,9 @@
             btnAgregar.BackColor = SystemColors.ButtonFace;
             btnAgregar.FlatStyle = FlatStyle.Popup;
             btnAgregar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAgregar.Location = new Point(39, 391);
+            btnAgregar.Location = new Point(270, 383);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(123, 46);
+            btnAgregar.Size = new Size(124, 32);
             btnAgregar.TabIndex = 2;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = false;
@@ -78,9 +79,9 @@
             btnModificar.BackColor = SystemColors.ButtonFace;
             btnModificar.FlatStyle = FlatStyle.Popup;
             btnModificar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnModificar.Location = new Point(310, 390);
+            btnModificar.Location = new Point(537, 383);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(128, 46);
+            btnModificar.Size = new Size(128, 32);
             btnModificar.TabIndex = 3;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = false;
@@ -88,12 +89,13 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.BackColor = SystemColors.ButtonFace;
+            btnEliminar.BackColor = Color.Firebrick;
             btnEliminar.FlatStyle = FlatStyle.Popup;
             btnEliminar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnEliminar.Location = new Point(580, 390);
+            btnEliminar.ForeColor = SystemColors.ButtonFace;
+            btnEliminar.Location = new Point(797, 383);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(115, 46);
+            btnEliminar.Size = new Size(115, 32);
             btnEliminar.TabIndex = 4;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = false;
@@ -105,9 +107,9 @@
             btnOrdenar.FlatStyle = FlatStyle.Popup;
             btnOrdenar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             btnOrdenar.ForeColor = SystemColors.ControlLightLight;
-            btnOrdenar.Location = new Point(828, 452);
+            btnOrdenar.Location = new Point(929, 245);
             btnOrdenar.Name = "btnOrdenar";
-            btnOrdenar.Size = new Size(115, 41);
+            btnOrdenar.Size = new Size(124, 34);
             btnOrdenar.TabIndex = 5;
             btnOrdenar.Text = "Ordenar";
             btnOrdenar.UseVisualStyleBackColor = false;
@@ -129,7 +131,7 @@
             btnCargar.FlatStyle = FlatStyle.Popup;
             btnCargar.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnCargar.ForeColor = SystemColors.ButtonFace;
-            btnCargar.Location = new Point(38, 452);
+            btnCargar.Location = new Point(929, 28);
             btnCargar.Name = "btnCargar";
             btnCargar.Size = new Size(124, 41);
             btnCargar.TabIndex = 7;
@@ -143,9 +145,9 @@
             btnGuardar.FlatStyle = FlatStyle.Popup;
             btnGuardar.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnGuardar.ForeColor = SystemColors.ButtonFace;
-            btnGuardar.Location = new Point(310, 452);
+            btnGuardar.Location = new Point(929, 99);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(128, 41);
+            btnGuardar.Size = new Size(124, 41);
             btnGuardar.TabIndex = 8;
             btnGuardar.Text = "Guardar\r\n archivo";
             btnGuardar.UseVisualStyleBackColor = false;
@@ -153,12 +155,13 @@
             // 
             // btnSesiones
             // 
-            btnSesiones.BackColor = SystemColors.ButtonFace;
+            btnSesiones.BackColor = SystemColors.Desktop;
             btnSesiones.FlatStyle = FlatStyle.Popup;
             btnSesiones.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSesiones.Location = new Point(828, 391);
+            btnSesiones.ForeColor = SystemColors.ButtonFace;
+            btnSesiones.Location = new Point(929, 307);
             btnSesiones.Name = "btnSesiones";
-            btnSesiones.Size = new Size(115, 46);
+            btnSesiones.Size = new Size(124, 40);
             btnSesiones.TabIndex = 9;
             btnSesiones.Text = "Registro\r\nInicio de sesion";
             btnSesiones.UseVisualStyleBackColor = false;
@@ -170,20 +173,31 @@
             btn_cargarBd.FlatStyle = FlatStyle.Popup;
             btn_cargarBd.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             btn_cargarBd.ForeColor = SystemColors.ButtonFace;
-            btn_cargarBd.Location = new Point(580, 452);
+            btn_cargarBd.Location = new Point(929, 170);
             btn_cargarBd.Name = "btn_cargarBd";
-            btn_cargarBd.Size = new Size(115, 46);
+            btn_cargarBd.Size = new Size(124, 43);
             btn_cargarBd.TabIndex = 10;
             btn_cargarBd.Text = "Cargar Base de Datos";
             btn_cargarBd.UseVisualStyleBackColor = false;
             btn_cargarBd.Click += btn_cargarBd_Click;
+            // 
+            // lblTrabajadores
+            // 
+            lblTrabajadores.AutoSize = true;
+            lblTrabajadores.Font = new Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTrabajadores.Location = new Point(38, 350);
+            lblTrabajadores.Name = "lblTrabajadores";
+            lblTrabajadores.Size = new Size(148, 17);
+            lblTrabajadores.TabIndex = 11;
+            lblTrabajadores.Text = "Gente en el sindicato:";
             // 
             // FrmSindicato
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
-            ClientSize = new Size(974, 514);
+            ClientSize = new Size(1068, 427);
+            Controls.Add(lblTrabajadores);
             Controls.Add(btn_cargarBd);
             Controls.Add(btnSesiones);
             Controls.Add(btnGuardar);
@@ -216,5 +230,6 @@
         private Button btnGuardar;
         private Button btnSesiones;
         private Button btn_cargarBd;
+        private Label lblTrabajadores;
     }
 }
