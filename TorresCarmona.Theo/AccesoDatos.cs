@@ -5,6 +5,12 @@ using Microsoft.Data.SqlClient;
 
 namespace Laburos
 {
+    /// <summary>
+    /// La clase AccesoDatos hereda la interfaz IAccesoDatos y aplica los metodos de la interfaz.
+    /// Permite agregar, eliminar y modificar los trabajadores en la base de datos de cada uno.
+    /// A su vez tiene el metodo CargarLista que trae todos los datos de la base de datos.
+    /// </summary>
+ 
     public class AccesoDatos: IAccesoDatos
     {
         private SqlConnection conexion;
