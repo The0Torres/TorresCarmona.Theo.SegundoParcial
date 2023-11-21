@@ -18,6 +18,7 @@ namespace FrmPrincipal
         DateTime fechaActual = DateTime.Now;
         private Usuario usuario;
         private Sindicato sindicato;
+        private CancellationTokenSource actualizarTiempoTokenSource = new CancellationTokenSource();
 
         public Sindicato Sindicato
         {
@@ -179,7 +180,7 @@ namespace FrmPrincipal
         private void btnOrdenar_Click(object sender, EventArgs e)
         {
             FrmOrdenamiento ordenamiento = new FrmOrdenamiento(sindicato);
-            ordenamiento.OrdenamientoCompletado += OrdenamientoCompletadoHandler; 
+            ordenamiento.OrdenamientoCompletado += OrdenamientoCompletadoHandler;
             ordenamiento.ShowDialog();
         }
 
@@ -191,8 +192,6 @@ namespace FrmPrincipal
         private void FrmSindicato_Load(object sender, EventArgs e)
         {
             string datos = usuario.ToString();
-
-            lblUsuario.Text = $"Perfil: {this.usuario.perfil} - Usuario: {this.usuario.nombre} - Fecha: {fechaActual}";
             string logFilePath = "usuarios.log";
             string entrada = $"{fechaActual.ToString("yyyy-MM-dd HH:mm:ss")} - {datos}\n";
 
@@ -200,10 +199,26 @@ namespace FrmPrincipal
             {
                 registro.Write(entrada);
             }
+
+            ActualizarLabelAsync();
+        }
+
+        private async Task ActualizarLabelAsync()
+        {
+            while (!actualizarTiempoTokenSource.Token.IsCancellationRequested)
+            {
+                DateTime horaActual = DateTime.Now;
+                string labelText = $"Perfil: {usuario.perfil} - Nombre: {usuario.nombre} - Hora actual: {horaActual.ToString(@"hh:mm:ss")}";
+
+                lblUsuario.Invoke((MethodInvoker)(() => lblUsuario.Text = labelText));
+
+                await Task.Delay(1000);
+            }
         }
 
         private void FrmSindicato_FormClosing(object sender, FormClosingEventArgs e)
         {
+            actualizarTiempoTokenSource.Cancel();
 
             if (e.CloseReason == CloseReason.UserClosing)
             {
