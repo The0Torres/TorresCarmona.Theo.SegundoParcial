@@ -11,6 +11,7 @@ namespace FrmPrincipal
     /// Permite gestionar una colección de trabajadores de diferentes clases y proporciona
     /// funcionalidades como agregar, modificar, eliminar y ordenar trabajadores.
     /// También ofrece la opción de cargar y guardar datos desde/hacia archivos XML.
+    /// Permite ingresar,modificar,eliminar y cargar datos en una base de datos Trabajadores.
     /// </summary>
 
     public partial class FrmSindicato : Form
@@ -107,7 +108,6 @@ namespace FrmPrincipal
                     {
                         Sindicato.Trabajadores[indice] = frmdeportista.Deportista;
 
-                        // Modificar en la base de datos
                         AccesoDatos accesoDatos = new AccesoDatos();
                         accesoDatos.ModificarTrabajador(frmdeportista.Deportista);
                     }
@@ -156,7 +156,6 @@ namespace FrmPrincipal
                 {
                     if (trabajador is Periodista)
                     {
-
                         AccesoDatos accesoDatos = new AccesoDatos();
                         accesoDatos.EliminarRegistro((Periodista)trabajador);
                     }
@@ -270,7 +269,6 @@ namespace FrmPrincipal
             }
         }
 
-
         private async void FrmSindicato_Load(object sender, EventArgs e)
         {
             string datos = usuario.ToString();
@@ -308,7 +306,7 @@ namespace FrmPrincipal
 
                 lblTrabajadores.Invoke((MethodInvoker)(() => lblTrabajadores.Text = textoTrabajadores));
 
-                await Task.Delay(1000);
+                await Task.Delay(100);
             }
         }
 
