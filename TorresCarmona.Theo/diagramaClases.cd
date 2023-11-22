@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="Laburos.Trabajador">
-    <Position X="11.75" Y="0.5" Width="4.75" />
+    <Position X="11.5" Y="0.5" Width="5.5" />
     <TypeIdentifier>
       <HashCode>QAACBEAAAAYAAACEgAAAhAAAAAAAAAAAAAAAAAAAAiQ=</HashCode>
       <FileName>Trabajador.cs</FileName>
@@ -25,8 +25,8 @@
     <Position X="19.75" Y="7.75" Width="8.75" />
     <InheritanceLine Type="Laburos.Trabajador" ManuallyRouted="true">
       <Path>
-        <Point X="14.125" Y="5.968" />
-        <Point X="14.125" Y="7.367" />
+        <Point X="14.25" Y="5.968" />
+        <Point X="14.25" Y="7.367" />
         <Point X="24.125" Y="7.367" />
         <Point X="24.125" Y="7.75" />
       </Path>
@@ -38,6 +38,14 @@
   </Class>
   <Class Name="Laburos.Deportista">
     <Position X="0.5" Y="7.75" Width="8.75" />
+    <InheritanceLine Type="Laburos.Trabajador" ManuallyRouted="true">
+      <Path>
+        <Point X="14.25" Y="5.968" />
+        <Point X="14.25" Y="7.367" />
+        <Point X="4.875" Y="7.367" />
+        <Point X="4.875" Y="7.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>BAAAEAQAABIAAAAAoAAAACAAAAAAAAAAAAAAAAAAAiA=</HashCode>
       <FileName>Deportista.cs</FileName>
@@ -73,7 +81,7 @@
     </TypeIdentifier>
   </Interface>
   <Enum Name="ETipo">
-    <Position X="15" Y="0.5" Width="1.5" />
+    <Position X="15.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>TipoTrabajador.cs</FileName>
