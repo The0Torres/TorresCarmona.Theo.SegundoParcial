@@ -66,15 +66,15 @@ namespace FrmPrincipal
                 }
                 else if (!double.TryParse(this.txtCirugias.Text, out double cirugias) || cirugias < 0 || this.txtCirugias.Text.Contains("."))
                 {
-                    throw new DatosInvalidosException("Ingrese las cirugías hechas de forma correcta.");
+                    OnMessageBoxMostrado("Ingrese las cirugías hechas de forma correcta.");
                 }
                 else if (string.IsNullOrWhiteSpace(txtEspecialidad.Text))
                 {
-                    throw new DatosInvalidosException("Ingrese una especialidad.");
+                    OnMessageBoxMostrado("Ingrese una especialidad.");
                 }
                 else if (cmbHospital.SelectedItem == null)
                 {
-                    throw new DatosInvalidosException("Seleccione un hospital.");
+                    OnMessageBoxMostrado("Seleccione un hospital.");
                 }
                 else
                 {
@@ -90,7 +90,7 @@ namespace FrmPrincipal
                     List<Cirujano> cirujanosEnBaseDeDatos = accesoDatos.ObtenerListaCirujanos();
                     if (cirujanosEnBaseDeDatos.Any(c => c.Id == id) && modificar == false)
                     {
-                        throw new DatosInvalidosException("El ID ya existe en la base de datos. Ingrese un ID único.");
+                        OnMessageBoxMostrado("El ID ya existe en la base de datos. Ingrese un ID único.");
                     }
 
                     cirujano = new Cirujano(nombre, apellido, salario, tipo, id, especialidad, hospital, cirugias);

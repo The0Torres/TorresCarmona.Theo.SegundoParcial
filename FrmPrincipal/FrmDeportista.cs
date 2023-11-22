@@ -62,15 +62,15 @@ namespace FrmPrincipal
                 }
                 else if (!double.TryParse(this.txtTrofeos.Text, out double trofeos) || trofeos < 0 || this.txtTrofeos.Text.Contains("."))
                 {
-                    throw new DatosInvalidosException("Ingrese una cantidad de trofeos válida.");
+                    OnMessageBoxMostrado("Ingrese una cantidad de trofeos válida.");
                 }
                 else if (!int.TryParse(this.txtRanking.Text, out int ranking) || ranking <= 0 || this.txtRanking.Text.Contains("."))
                 {
-                    throw new DatosInvalidosException("Ingrese un ranking mundial válido.");
+                    OnMessageBoxMostrado("Ingrese un ranking mundial válido.");
                 }
                 else if (string.IsNullOrWhiteSpace(txtDeporte.Text))
                 {
-                    throw new DatosInvalidosException("Ingrese un deporte.");
+                    OnMessageBoxMostrado("Ingrese un deporte.");
                 }
                 else
                 {
@@ -85,7 +85,7 @@ namespace FrmPrincipal
                     List<Deportista> deportistasEnBaseDeDatos = accesoDatos.ObtenerListaDeportistas();
                     if (deportistasEnBaseDeDatos.Any(d => d.Id == id) && modificar == false)
                     {
-                        throw new DatosInvalidosException("El ID ya existe en la base de datos. Ingrese un ID único.");
+                        OnMessageBoxMostrado("El ID ya existe en la base de datos. Ingrese un ID único.");
                     }
 
                     deportista = new Deportista(nombre, apellido, salario, tipo, id, deporte, trofeos, ranking);

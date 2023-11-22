@@ -69,17 +69,17 @@ namespace FrmPrincipal
 
                 else if (!double.TryParse(this.txtCredibilidad.Text, out double credibilidad) || credibilidad < 0 || credibilidad > 100)
                 {
-                    throw new DatosInvalidosException("Ingrese un porcentaje de credibilidad válido.");
+                    OnMessageBoxMostrado("Ingrese un porcentaje de credibilidad válido.");
                 }
 
                 else if (string.IsNullOrWhiteSpace(txtEspecializacion.Text))
                 {
-                    throw new DatosInvalidosException("Ingrese una especialización.");
+                    OnMessageBoxMostrado("Ingrese una especialización.");
                 }
 
                 else if (cmbMedio.SelectedItem == null)
                 {
-                    throw new DatosInvalidosException("Seleccione un medio.");
+                    OnMessageBoxMostrado("Seleccione un medio.");
                 }
                 else
                 {
@@ -95,7 +95,7 @@ namespace FrmPrincipal
                     List<Periodista> periodistasEnBaseDeDatos = accesoDatos.ObtenerListaPeriodistas();
                     if (periodistasEnBaseDeDatos.Any(p => p.Id == id) && modificar == false)
                     {
-                        throw new DatosInvalidosException("El ID ya existe en la base de datos. Ingrese un ID único.");
+                        OnMessageBoxMostrado("El ID ya existe en la base de datos. Ingrese un ID único.");
                     }
 
                     periodista = new Periodista(nombre, apellido, salario, tipo, id, especializacion, credibilidad, medio);
