@@ -29,6 +29,8 @@ namespace FrmPrincipal
                         lstRegistro.Items.Add(linea);
                     }
                 }
+
+                lblRegistros.Text = $"Cantidad total de registros: {lstRegistro.Items.Count}";
             }
             else
             {

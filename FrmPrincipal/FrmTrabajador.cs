@@ -19,7 +19,6 @@ namespace FrmPrincipal
 
     public partial class FrmTrabajador : Form
     {
-        // Define un evento para mostrar un cuadro de mensaje
         public event EventHandler<string> MessageBoxMostrado;
 
         protected string nombre;
