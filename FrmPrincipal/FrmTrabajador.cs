@@ -19,6 +19,9 @@ namespace FrmPrincipal
 
     public partial class FrmTrabajador : Form
     {
+        // Define un evento para mostrar un cuadro de mensaje
+        public event EventHandler<string> MessageBoxMostrado;
+
         protected string nombre;
         protected string apellido;
         protected double salario;
@@ -40,37 +43,42 @@ namespace FrmPrincipal
             this.Close();
         }
 
-
         protected bool ValidarDatos()
         {
-
-            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtApellido.Text) ||
-                string.IsNullOrEmpty(txtSalario.Text) || cmbTipo.SelectedItem == null ||
-                string.IsNullOrEmpty(txtId.Text))
+            try
             {
-                MessageBox.Show("Por favor, complete todos los campos.", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtApellido.Text) ||
+                    string.IsNullOrEmpty(txtSalario.Text) || cmbTipo.SelectedItem == null ||
+                    string.IsNullOrEmpty(txtId.Text))
+                {
+                    OnMessageBoxMostrado("Por favor, complete todos los campos.");
+                    return false;
+                }
+
+                if (!double.TryParse(this.txtSalario.Text, out double salario) || salario <= 0)
+                {
+                    OnMessageBoxMostrado("Ingrese un salario válido.");
+                    return false;
+                }
+
+                if (!double.TryParse(this.txtId.Text, out double id) || id < 1)
+                {
+                    OnMessageBoxMostrado("Ingrese un Id válido.");
+                    return false;
+                }
+
+                return true;
             }
-            if (!double.TryParse(this.txtSalario.Text, out double salario) || salario <= 0)
+            catch (DatosInvalidosException ex)
             {
-                MessageBox.Show("Ingrese un salario valido.",
-                                        "Advertencia",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (!double.TryParse(this.txtId.Text, out double id) || id < 1)
-            { 
-                MessageBox.Show("Ingrese un Id valido.",
-                                        "Advertencia",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Warning);
-                return false;
-            }
-
-
-            return true;
         }
 
+        protected virtual void OnMessageBoxMostrado(string mensaje)
+        {
+            throw new DatosInvalidosException($"{mensaje}");
+        }
     }
 }
