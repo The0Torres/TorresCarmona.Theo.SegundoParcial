@@ -9,3 +9,6 @@ Ahora se a agregado una base de datos llamada Trabajadores, en la cual se guarda
 
 ## Diagrama de Clases
 ![diagramaClases](TorresCarmona.Theo/diagramaClases.png)
+![Diagrama de Clases 1](diagramaClasesEspecifico.png)
+![Diagrama de Clases 2](diagramaClasesEspecifico2.png)
+![Diagrama de Clases 3](diagramaClasesEspecifico3.png)
